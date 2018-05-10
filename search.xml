@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F05%2F09%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>hello</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2F2018%2F05%2F09%2FREADME%2F</url>
+    <content type="text"><![CDATA[Background TrackerA tracker using background method for ARM’s AI competition. See “技术报告.pdf” for more algorithmic details. Environment GCC CMake Opencv 2 Effect normal scene （一般场景） occlusion scene （遮挡/下蹲） How to UseIn order to use video file (or use camera), please revise “#define USE_VIDEO_FILE” in “main_demo.cpp” 修改main_demo.cpp中的宏定义:”#define USE_VIDEO_FILE” 可以控制使用摄像头还是读取视频文件。]]></content>
+  </entry>
+</search>
