@@ -109,23 +109,34 @@
 
 
 
-  <meta name="description" content="Talk is cheap, show me the code!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LogM&#39;s Blog">
-<meta property="og:url" content="https://imLogM.github.io/archives/2018/index.html">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：二维图像的傅立叶变换，与一维傅立叶相比，在理解上要抽象很多。我在网上找了几篇相对较好的文章，并用matlab自己做了几个实验图像，希望能对大家理解二维图像的傅立叶变换有所帮助。 关键字：二维傅立叶变换，图像处理">
+<meta name="keywords" content="图像处理,傅立叶变换,matlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二位图像的傅立叶变换">
+<meta property="og:url" content="https://imLogM.github.io/图像处理/image-fft/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="Talk is cheap, show me the code!">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：二维图像的傅立叶变换，与一维傅立叶相比，在理解上要抽象很多。我在网上找了几篇相对较好的文章，并用matlab自己做了几个实验图像，希望能对大家理解二维图像的傅立叶变换有所帮助。 关键字：二维傅立叶变换，图像处理">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/1_1.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/fft_kernel.jpg">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/4_4.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/1_4.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/1_100.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/4_100.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/100_1.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/image-fft/100_4.png">
+<meta property="og:updated_time" content="2018-05-11T03:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LogM&#39;s Blog">
-<meta name="twitter:description" content="Talk is cheap, show me the code!">
+<meta name="twitter:title" content="二位图像的傅立叶变换">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：二维图像的傅立叶变换，与一维傅立叶相比，在理解上要抽象很多。我在网上找了几篇相对较好的文章，并用matlab自己做了几个实验图像，希望能对大家理解二维图像的傅立叶变换有所帮助。 关键字：二维傅立叶变换，图像处理">
+<meta name="twitter:image" content="https://imlogm.github.io/图像处理/image-fft/1_1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://imLogM.github.io/archives/2018/"/>
+  <link rel="canonical" href="https://imLogM.github.io/图像处理/image-fft/"/>
 
 
 
@@ -135,7 +146,7 @@
   };
 </script>
 
-  <title>归档 | LogM's Blog</title>
+  <title>二位图像的傅立叶变换 | LogM's Blog</title>
   
 
 
@@ -182,7 +193,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/imLogM" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -256,7 +267,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
@@ -276,28 +287,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -346,117 +335,288 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 2 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/图像处理/image-fft/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LogM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/daodao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LogM's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/图像处理/image-fft/" itemprop="url">
-              
-                <span itemprop="name">二位图像的傅立叶变换</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">二位图像的傅立叶变换
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-11T11:00:00+08:00"
-              content="2018-05-11" >
-          05-11
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2018-05-11 11:00:00" itemprop="dateCreated datePublished" datetime="2018-05-11T11:00:00+08:00">2018-05-11</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图像处理/" itemprop="url" rel="index"><span itemprop="name">图像处理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/图像处理/image-fft/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/图像处理/image-fft/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/测试页/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-09T22:00:00+08:00"
-              content="2018-05-09" >
-          05-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
+<p><strong>摘要</strong>：二维图像的傅立叶变换，与一维傅立叶相比，在理解上要抽象很多。我在网上找了几篇相对较好的文章，并用matlab自己做了几个实验图像，希望能对大家理解二维图像的傅立叶变换有所帮助。</p>
+<p><strong>关键字</strong>：二维傅立叶变换，图像处理</p>
+<a id="more"></a>
+<h2 id="1-一维傅立叶变换"><a href="#1-一维傅立叶变换" class="headerlink" title="1. 一维傅立叶变换"></a>1. 一维傅立叶变换</h2><p>如果是理工科的话，一维傅立叶变换应该在大学里都学过。如果有所遗忘的话，可以看这篇比较易懂又不失数学性的文章<a href="https://www.zhihu.com/question/19714540/answer/334686351" target="_blank" rel="noopener">“如何理解傅里叶变换公式？-马同学的回答”</a>。</p>
+<p>一维傅立叶变换的公式为：<br>$$ F(\omega)=\int_{-\infty}^{+\infty}f(t)e^{-i\omega t}dt $$</p>
+<h2 id="2-二维傅立叶变换"><a href="#2-二维傅立叶变换" class="headerlink" title="2. 二维傅立叶变换"></a>2. 二维傅立叶变换</h2><p>二维傅立叶变换的公式为：<br>$$ F(u,v)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(x,y)e^{-i(ux+vy)}dxdy $$<br>由一维傅立叶的公式，能比较容易类比得到二维傅立叶变换公式。但注意，二维傅立叶不是x方向与y方向正弦余弦的简单叠加，而是乘积的叠加。</p>
+<p>比如：一维傅立叶变换的三角函数系是$sin(nx)$、$cos(nx)$以及常数1，二维傅立叶变换的三角函数系是$sin(ux+vy)$、$cos(ux+vy)$和常数1.而$sin(ux+vy)$和$cos(ux+vy)$可以继续分解为$sin(ux)sin(vy),\:\:sin(ux)cos(vy),\:\:cos(ux)sin(vy),\:\:cos(ux)cos(vy)$这四个乘积的形式。</p>
+<p>如果对上面一段话的内容有兴趣的话，可以参看这篇文章<a href="https://www.zhihu.com/question/22611929/answer/341436331" target="_blank" rel="noopener">“二维傅里叶变换是怎么进行的？-CharlyGordon的回答”</a>。看不懂也没关系，只需要知道二维傅立叶不是x方向与y方向正弦余弦的简单叠加。</p>
+<blockquote>
+<p><strong>注意1</strong>：二维傅立叶变换后生成的图像与原图上的像素点不存在一一对应关系。原图中的像素值是x,y坐标轴下的（即空间域），而傅立叶变换后的像素值是u,v坐标轴下的（即频域）。</p>
+</blockquote>
+<blockquote>
+<p><strong>注意2</strong>：图像的像素点是离散且有限的，故实际进行图像傅立叶变换时，使用的是离散傅立叶变换（DFT），需要把上述公式中的积分号$\int_{-\infty}^{+\infty}$换成求和号$\sum$</p>
+</blockquote>
+<h2 id="3-二维傅立叶变换的直观理解"><a href="#3-二维傅立叶变换的直观理解" class="headerlink" title="3. 二维傅立叶变换的直观理解"></a>3. 二维傅立叶变换的直观理解</h2><p>原始图像经过二维傅立叶变换后得到的是u,v坐标系下的二维矩阵，由$(u_1,v_1)$、$(u_1,v_2)$、$(u_2,v_1)$等一系列点组成。每个位置$(u_n,v_n)$都有其对应的值$F(u_n,v_n)$。如果把这个二维矩阵归一化成傅立叶后的图像来显示，那么傅立叶后图像上像素点位置和像素点亮度就表征二维矩阵相应的点和该点的值。</p>
+<p>如图1所示，有左中右三幅小图，我们先不管右小图，左小图是原始图像，中小图是傅立叶变换后的。可以看到傅立叶变换后的图片的两个斜对角出现了两个白点，这两点处的亮度值最大，其余点处亮度值为0。这表示原始图像可以由这两点所对应的三角波组成，三角波的幅值为其对应点的亮度。</p>
+<div align="center"><img src="./1_1.png"></div><br><div align="center">图1</div>
+
+<p>那么这些三角波长什么样子呢？图2是我从网上找到的一幅图，原始出处未知。原来这张图是频移后的三角波，由于频移是下面才讲到的知识点，我感觉这样会对理解造成一定影响，所以我处理成频移前的，便于大家理解。相信对比图1和图2，你们能很快理解其中的关系。</p>
+<div align="center"><img src="./fft_kernel.jpg"></div><br><div align="center">图2</div>
+
+<p>在图2的右小图中，我用红框标出了其中的一个三角波，这个三角波的外形与图1的原始图像最相似。结果也和我们预料的一样，傅立叶变换后，这个三角波的幅值是最大的，所以我们看到了图1中小图<strong>左上角</strong>的白点。</p>
+<blockquote>
+<p>注意：图2的三角波对应于图1中小图的左上角的区域，所以我们得到了左上角的白点。至于图1中小图的右上、左下、右下区域的三角波长什么样子，请看下面一段话。</p>
+</blockquote>
+<p>看到这里可能大家还有个疑问：左上角的白点明白了，但是右下角的白点怎么来的？如果你自己动手做实验的话，会发现这两个白点是对称的（换而言之，右下角区域的三角波和左上角区域的三角波对称）。这其实是由两个原因共同作用造成的：其一，傅立叶<strong>双边频谱关于原点对称</strong>；其二，上面提到过，二维图像傅立叶变换是离散傅立叶变换，<strong>离散傅里叶变换本质是周期信号求傅里叶级数</strong>，所以其实会有<strong>周期延拓</strong>。</p>
+<p>因为这两个性质涉及一些更深的知识，我不详细展开了。有兴趣的同学可以找信号处理方面的书来看，学过的同学应该能马上理解。</p>
+<p>解决了图1中左小图、中小图的问题，那么图1的右小图是什么呢？右小图其实是中小图经过频移后的。为什么要频移，因为我们把傅立叶变换得到的二维矩阵用图像的方式显示时，默认的坐标原点(0, 0)位于图像的左上角。频移要做的就是把坐标原点移动到图像的中心。</p>
+<p>可以想到，图1右小图的中间偏右下的点是由图1左小图左上角的点经过移动后得到的，而图1右小图的中间偏左上的点是由之前提到的“傅立叶双边频谱关于原点对称”这条性质得到的。</p>
+<h2 id="4-Matlab小实验"><a href="#4-Matlab小实验" class="headerlink" title="4. Matlab小实验"></a>4. Matlab小实验</h2><p>看了上面的内容，相信大家都已经对二维傅立叶有了一定的直观印象。我又用matlab写了个小程序，生成了几幅图片，帮助大家理解。</p>
+<div align="center"><img src="./4_4.png"></div><br><div align="center">图3</div>
+
+<div align="center"><img src="./1_4.png"></div><br><div align="center">图4</div>
+
+<div align="center"><img src="./1_100.png"></div><br><div align="center">图5</div>
+
+<div align="center"><img src="./4_100.png"></div><br><div align="center">图6</div>
+
+<div align="center"><img src="./100_1.png"></div><br><div align="center">图7</div>
+
+<div align="center"><img src="./100_4.png"></div><br><div align="center">图8</div>
+
+<h2 id="5-Matlab代码"><a href="#5-Matlab代码" class="headerlink" title="5. Matlab代码"></a>5. Matlab代码</h2><p>最后附上我的matlab代码，便于大家自己做实验。</p>
+<p>如果对傅立叶变换的代码有什么疑问的话，可以看这篇文章<a href="https://www.cnblogs.com/sanshanyin/p/5426822.html" target="_blank" rel="noopener">“使用matlab对图像进行傅里叶变换-三山音”</a>。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 用sin(x+y)的图像来帮助理解二维图像的傅立叶变换</span></span><br><span class="line"></span><br><span class="line">img_size = <span class="number">100</span>;     <span class="comment">% 图片尺寸</span></span><br><span class="line">x_step = <span class="number">1</span>;     </span><br><span class="line">y_step = <span class="number">1</span>;</span><br><span class="line">image = <span class="built_in">zeros</span>(img_size, img_size);</span><br><span class="line"><span class="keyword">for</span> x = x_step:x_step:x_step*img_size</span><br><span class="line">    <span class="keyword">for</span> y=y_step:y_step:y_step*img_size</span><br><span class="line">        image(x/x_step, y/y_step)=<span class="built_in">sin</span>(<span class="number">4</span>*<span class="built_in">pi</span>*x/img_size + <span class="number">4</span>*<span class="built_in">pi</span>*y/img_size);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line">imshow(image)       <span class="comment">% 原图</span></span><br><span class="line">title(<span class="string">'原图'</span>)</span><br><span class="line"></span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">image = im2double(image);</span><br><span class="line">F_unshift = fft2(image); </span><br><span class="line">F_unshift_abs = <span class="built_in">abs</span>(F_unshift);</span><br><span class="line">T = <span class="built_in">log</span>(F_unshift_abs+<span class="number">1</span>);</span><br><span class="line">imshow(T);   <span class="comment">% 傅立叶变换后，未频移前</span></span><br><span class="line">title(<span class="string">'傅立叶变换后，未频移'</span>)</span><br><span class="line"></span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">F = fftshift(F_unshift);</span><br><span class="line">F_abs = <span class="built_in">abs</span>(F);</span><br><span class="line">T = <span class="built_in">log</span>(F_abs+<span class="number">1</span>);</span><br><span class="line">imshow(T)           <span class="comment">% 傅立叶变换后，频移后</span></span><br><span class="line">title(<span class="string">'傅立叶变换后，频移后'</span>)</span><br></pre></td></tr></table></figure></p>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图像处理/" <i class="fa fa-tag"></i> 图像处理</a>
+          
+            <a href="/tags/傅立叶变换/" <i class="fa fa-tag"></i> 傅立叶变换</a>
+          
+            <a href="/tags/matlab/" <i class="fa fa-tag"></i> matlab</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/测试页/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -477,8 +637,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -575,6 +744,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-一维傅立叶变换"><span class="nav-number">1.</span> <span class="nav-text">1. 一维傅立叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-二维傅立叶变换"><span class="nav-number">2.</span> <span class="nav-text">2. 二维傅立叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-二维傅立叶变换的直观理解"><span class="nav-number">3.</span> <span class="nav-text">3. 二维傅立叶变换的直观理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Matlab小实验"><span class="nav-number">4.</span> <span class="nav-text">4. Matlab小实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Matlab代码"><span class="nav-number">5.</span> <span class="nav-text">5. Matlab代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -732,6 +917,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
@@ -773,6 +962,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'imLogM',
+            repo: 'blog_gitment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '275367e83f8762f2f3ca026827903d1e80979e25',
+            
+                client_id: '0c815dd35359a2ed69dc'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
@@ -1133,6 +1346,29 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
