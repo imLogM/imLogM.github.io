@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[以VGG为例分析深度网络的计算量和参数量]]></title>
+    <title><![CDATA[以VGG为例，分析深度网络的计算量和参数量]]></title>
     <url>%2F%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%2Fvgg-complexity%2F</url>
     <content type="text"><![CDATA[本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNet、SqueezeNet等论文，你就能明白这些网络结构的精妙之处。 关键字：深度网络， VGG， 复杂度分析， 计算量， 参数量 1. VGG的结构VGG的结构如下图所示： 图1 不同VGG网络的结构 我们选取其中的VGG-16（上图中的D列）来进行计算量和参数量的分析。VGG-16每个卷积操作后，图像大小变化情况如下图所示： 图2 VGG-16的结构 2. 卷积操作的计算量和参数量对于卷积操作的计算量（时间复杂度）和参数量（空间复杂度）可以看这篇文章：卷积神经网络的复杂度分析-Michael Yuan的文章 注意，这些复杂度计算都是估算，并非精确值。 我们以VGG-16的第一层卷积为例：输入图像224×224×3，输出224×224×64，卷积核大小3×3。 计算量：$$ Times\approx 224\times 224\times 3\times 3\times 3\times 64=8.7\times 10^7$$ 参数量：$$ Space\approx 3\times 3\times 3\times 64=1728$$ 再举一个例子，VGG-16的最后一个卷积层：输入14×14×512，输出14×14×512，卷积核大小3×3。 计算量：$$ Times\approx 14\times 14\times 3\times 3\times 512\times 512=4.6\times 10^8$$ 参数量：$$ Space\approx 3\times 3\times 512\times 512=2.4\times 10^6$$ 3. 全连接层的计算量和参数量考虑VGG-16的最后一个全连接层：上层神经元数为4096，下层神经元数为1000。这样的全连接层复杂度应该如何计算？ 其实全连接层可以视为一种特殊的卷积层：上层为1×1×4096，下层为1×1×1000，使用的1×1的卷积核进行卷积。 那么，计算量：$$ Times\approx 1\times 1\times 1\times 1\times 4096\times 1000=4\times 10^6$$ 参数量：$$ Space\approx 1\times 1\times 4096\times 1000=4\times 10^6$$ 4. VGG-16复杂度分析从上述计算中，相信大家对深度网络的复杂度已经有了一些体会，比如VGG-16中： 1、卷积层的时间复杂度大致是同一数量级的 2、随着网络深度加深，卷积层的空间复杂度快速上升（每层的空间复杂度是上层的两倍） 3、全连接层的空间复杂度比卷积层的最后一层还大 当然，深度网络的复杂度是和网络结构紧密相关的，上述3个结论仅对VGG这种网络结构有效。]]></content>
       <categories>
