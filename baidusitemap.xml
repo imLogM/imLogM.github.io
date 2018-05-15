@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/vgg-complexity/</loc>
+    <lastmod>2018-05-15T03:00:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>以VGG为例，分析深度网络的计算量和参数量</title>
+        <pubTime>2018-05-15T02:00:00.000Z</pubTime>
+        
+        <tag>深度网络</tag>
+         
+        <tag>VGG</tag>
+         
+        <tag>复杂度分析</tag>
+         
+        <tag>计算量</tag>
+         
+        <tag>参数量</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习" url="https://imLogM.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://imLogM.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/image-fft/</loc>
     <lastmod>2018-05-11T03:30:00.000Z</lastmod>
     <data>
