@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/batch-normalization/</loc>
+    <lastmod>2018-05-16T03:00:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>Batch Normalization (BN)</title>
+        <pubTime>2018-05-16T02:00:00.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+        <tag>BN</tag>
+         
+        <tag>优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习" url="https://imLogM.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/vgg-complexity/</loc>
     <lastmod>2018-05-15T03:00:00.000Z</lastmod>
     <data>
