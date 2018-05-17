@@ -109,24 +109,29 @@
 
 
 
-  <meta name="description" content="Talk is cheap, show me the code!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://imLogM.github.io/categories/index.html">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：最近使用Xception时发现效果很好，所以打算介绍下整个Inception系列。 关键字：深度学习, Inception, Xception, GoogLeNet">
+<meta name="keywords" content="深度学习,Inception,Xception,GoogLeNet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊一聊Inception系列（GoogLeNet、Inception、Xception）">
+<meta property="og:url" content="https://imLogM.github.io/深度学习/inception/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="Talk is cheap, show me the code!">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：最近使用Xception时发现效果很好，所以打算介绍下整个Inception系列。 关键字：深度学习, Inception, Xception, GoogLeNet">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-10T03:49:58.225Z">
+<meta property="og:image" content="https://imlogm.github.io/深度学习/inception/1.png">
+<meta property="og:image" content="https://imlogm.github.io/深度学习/inception/2.png">
+<meta property="og:image" content="https://imlogm.github.io/深度学习/inception/3.png">
+<meta property="og:updated_time" content="2018-05-17T13:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Talk is cheap, show me the code!">
+<meta name="twitter:title" content="聊一聊Inception系列（GoogLeNet、Inception、Xception）">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：最近使用Xception时发现效果很好，所以打算介绍下整个Inception系列。 关键字：深度学习, Inception, Xception, GoogLeNet">
+<meta name="twitter:image" content="https://imlogm.github.io/深度学习/inception/1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://imLogM.github.io/categories/"/>
+  <link rel="canonical" href="https://imLogM.github.io/深度学习/inception/"/>
 
 
 
@@ -136,7 +141,7 @@
   };
 </script>
 
-  <title>categories | LogM's Blog</title>
+  <title>聊一聊Inception系列（GoogLeNet、Inception、Xception） | LogM's Blog</title>
   
 
 
@@ -249,7 +254,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
@@ -277,28 +282,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -349,69 +332,282 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/深度学习/inception/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LogM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/daodao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LogM's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h2 class="post-title" itemprop="name headline">categories</h2>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
+          <h2 class="post-title" itemprop="name headline">聊一聊Inception系列（GoogLeNet、Inception、Xception）
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-17 20:00:00 / 修改时间：21:00:00" itemprop="dateCreated datePublished" datetime="2018-05-17T20:00:00+08:00">2018-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
+
                 
                 
-                  
-                    
-                  
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/深度学习/inception/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/深度学习/inception/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
                 
-                  
-                    
-                  
+                  <span class="post-meta-item-text">本文字数：</span>
                 
-                  
-                    
-                  
+                <span title="本文字数">1.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
                 
-                目前共计 3 个分类
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
             </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/图像处理/">图像处理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试页/">测试页</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">3</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
+<p><strong>摘要</strong>：最近使用Xception时发现效果很好，所以打算介绍下整个Inception系列。</p>
+<p><strong>关键字</strong>：深度学习, Inception, Xception, GoogLeNet</p>
+<a id="more"></a>
+<hr>
+<h2 id="1-从模型结构说起"><a href="#1-从模型结构说起" class="headerlink" title="1. 从模型结构说起"></a>1. 从模型结构说起</h2><p>其实关于Inception的结构，以及各代的改进，大家可以看这篇文章：<a href="https://blog.csdn.net/u010402786/article/details/52433324" target="_blank" rel="noopener">深入浅出——网络模型中Inception的作用与结构全解析-深度学习思考者</a></p>
+<p>有同学可能要说，上面链接里的那篇文章这么简单，似乎没讲太多内容。其实因为Inception每代之间联系性比较强，所以看明白了其中一篇，其他的也都能很快懂。如果要我来讲的话，大概会是下面四行字：</p>
+<ul>
+<li>GoogLeNet（Inception-v1）：相比AlexNet和VGG，出现了多支路，引入了1×1卷积帮助减少网络计算量</li>
+<li>Inception-v2：引入Batch Normalization(BN)；5×5卷积使用两个3×3卷积代替</li>
+<li>Inception-v3：n×n卷积分割为1×n和n×1两个卷积</li>
+<li>Inception-v4：进一步优化，引入ResNet的shortcut思想</li>
+</ul>
+<blockquote>
+<p>个人体会：v1和v2中的改进对深度学习的发展具有非常大的意义；v3有一点创新，但开始出现“炼丹”的感觉；v4参考ResNet说明ResNet的思想确实牛逼，其他部分完全在“炼丹”，网络过于精细，不容易迁移到其他任务中</p>
+</blockquote>
+<blockquote>
+<p>推荐大家在训练模型时尝试使用Inception-v2中出现的Batch Normalization(BN)，关于BN的原理，可以看我上一篇文章：<a href="https://imlogm.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/batch-normalization/">Batch Normalization(BN)</a></p>
+</blockquote>
+<h2 id="2-Xception"><a href="#2-Xception" class="headerlink" title="2. Xception"></a>2. Xception</h2><p>之所以把Xception单拎出来说，一是因为Xception比较新，上面那篇文章没有讲到；二是因为Xception设计的目的与Inception不同：Inception的目标是针对分类任务追求最高的精度，以至于后面几代开始“炼丹”，模型过于精细；Xception的目标是设计出易迁移、计算量小、能适应不同任务，且精度较高的模型。</p>
+<p>那么Xception与Inception-v3在结构上有什么差别呢？</p>
+<p>如图1为Inception-v3的模块结构，依据化繁为简的思想，把模块结构改造为图2。</p>
+<div align="center"><img src="./1.png"></div><br><div align="center">图1</div>
+
+<div align="center"><img src="./2.png"></div><br><div align="center">图2</div>
+
+<p>依据depthwise separable convolution的思想，可以进一步把图2改造到图3。</p>
+<div align="center"><img src="./3.png"></div><br><div align="center">图3</div>
+
+<p>什么是depthwise separable convolution呢？MobileNet等网络为了减少计算量都有用到这个方法，不过Xception在这里的用法和一般的depthwise separable convolution还有点不同，所以为了防止大家搞糊涂，我就不介绍一般性的用法了，直接介绍Xception中的用法。</p>
+<p>对于112×112×64的输入做一次普通的3×3卷积，每个卷积核大小为3×3×64，也就是说，每一小步的卷积操作是同时在面上（3×3的面）和深度上（×64的深度）进行的。</p>
+<p>那如果把面上和深度上的卷积分离开来呢？这就是图3所要表达的操作。依旧以112×112×64的输入来作例子，先进入1×1卷积，每个卷积核大小为1×1×64，有没有发现，这样每一小步卷积其实相当于只在深度上（×64的深度）进行。</p>
+<p>然后，假设1×1卷积的输出为112×112×7，我们把它分为7份，即每份是112×112×1，每份后面单独接一个3×3的卷积（如图3所示，画了7个3×3的框），此时每个卷积核为3×3×1，有没有发现，这样每一小步卷积其实相当于只在面上（3×3的面）进行。</p>
+<p>最后，把这7个3×3的卷积的输出叠在一起就可以了。根据Xception论文的实验结果，Xception在精度上略低于Inception-v3，但在计算量和迁移性上都好于Inception-v3。</p>
+<h2 id="3-关于模型复杂度的计算"><a href="#3-关于模型复杂度的计算" class="headerlink" title="3. 关于模型复杂度的计算"></a>3. 关于模型复杂度的计算</h2><p>其实这部分内容我本来打算重点写的，为此我还特地写了篇“以VGG为例，分析模型复杂度”的文章。(+﹏+)~ 可是，就在写那篇文章的时候，我发现了一篇对Inception的复杂度计算介绍得非常清晰的文章。那我就偷个懒，大家可以直接看这篇文章的后半部分：<a href="https://zhuanlan.zhihu.com/p/31575074" target="_blank" rel="noopener">卷积神经网络的复杂度分析-Michael Yuan的文章</a></p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" <i class="fa fa-tag"></i> 深度学习</a>
+          
+            <a href="/tags/Inception/" <i class="fa fa-tag"></i> Inception</a>
+          
+            <a href="/tags/Xception/" <i class="fa fa-tag"></i> Xception</a>
+          
+            <a href="/tags/GoogLeNet/" <i class="fa fa-tag"></i> GoogLeNet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/深度学习/batch-normalization/" rel="next" title="Batch Normalization (BN)">
+                <i class="fa fa-chevron-left"></i> Batch Normalization (BN)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -432,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -554,6 +759,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-从模型结构说起"><span class="nav-number">1.</span> <span class="nav-text">1. 从模型结构说起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Xception"><span class="nav-number">2.</span> <span class="nav-text">2. Xception</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关于模型复杂度的计算"><span class="nav-number">3.</span> <span class="nav-text">3. 关于模型复杂度的计算</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -756,6 +977,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: decodeURI(window.location.pathname),
+            owner: 'imLogM',
+            repo: 'blog_gitment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '275367e83f8762f2f3ca026827903d1e80979e25',
+            
+                client_id: '0c815dd35359a2ed69dc'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
@@ -1116,6 +1361,29 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
