@@ -4,6 +4,45 @@
 
     
   <url>
+    <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/resnet/</loc>
+    <lastmod>2018-05-28T09:30:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>聊一聊ResNet系列（ResNet、ResNeXt）</title>
+        <pubTime>2018-05-28T09:00:00.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+        <tag>ResNet</tag>
+         
+        <tag>ResNeXt</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习" url="https://imLogM.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://imLogM.github.io/uncategorized/resnet/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>2018-05-28T09:09:11.406Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2018-05-28T09:13:53.915Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://imLogM.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/multi-seed-region-grow/</loc>
     <lastmod>2018-05-22T03:00:00.000Z</lastmod>
     <data>

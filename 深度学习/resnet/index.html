@@ -109,25 +109,29 @@
 
 
 
-  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof 关键字：C/C++">
-<meta name="keywords" content="C&#x2F;C++">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：终于到了介绍ResNet系列的时候了。ResNet真的很好用，特别时shortcut的想法真的厉害。最近，又推出了改进版本ResNeXt，新版本结合了Inception多支路的思想。 关键字：深度学习, ResNet, ResNeXt">
+<meta name="keywords" content="深度学习,ResNet,ResNeXt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++常见问题（持续更新）">
-<meta property="og:url" content="https://imLogM.github.io/C-C/c-problem-1/index.html">
+<meta property="og:title" content="聊一聊ResNet系列（ResNet、ResNeXt）">
+<meta property="og:url" content="https://imLogM.github.io/深度学习/resnet/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof 关键字：C/C++">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：终于到了介绍ResNet系列的时候了。ResNet真的很好用，特别时shortcut的想法真的厉害。最近，又推出了改进版本ResNeXt，新版本结合了Inception多支路的思想。 关键字：深度学习, ResNet, ResNeXt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-19T08:30:00.000Z">
+<meta property="og:image" content="https://imlogm.github.io/深度学习/resnet/shortcut.png">
+<meta property="og:image" content="https://imlogm.github.io/深度学习/resnet/network.png">
+<meta property="og:image" content="https://imlogm.github.io/深度学习/resnet/ResNeXt.jpg">
+<meta property="og:updated_time" content="2018-05-28T09:30:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C&#x2F;C++常见问题（持续更新）">
-<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof 关键字：C/C++">
+<meta name="twitter:title" content="聊一聊ResNet系列（ResNet、ResNeXt）">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：终于到了介绍ResNet系列的时候了。ResNet真的很好用，特别时shortcut的想法真的厉害。最近，又推出了改进版本ResNeXt，新版本结合了Inception多支路的思想。 关键字：深度学习, ResNet, ResNeXt">
+<meta name="twitter:image" content="https://imlogm.github.io/深度学习/resnet/shortcut.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://imLogM.github.io/C-C/c-problem-1/"/>
+  <link rel="canonical" href="https://imLogM.github.io/深度学习/resnet/"/>
 
 
 
@@ -137,7 +141,7 @@
   };
 </script>
 
-  <title>C/C++常见问题（持续更新） | LogM's Blog</title>
+  <title>聊一聊ResNet系列（ResNet、ResNeXt） | LogM's Blog</title>
   
 
 
@@ -342,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/C-C/c-problem-1/">
+    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/深度学习/resnet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LogM">
@@ -359,7 +363,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">C/C++常见问题（持续更新）
+          <h2 class="post-title" itemprop="name headline">聊一聊ResNet系列（ResNet、ResNeXt）
               
             
           </h2>
@@ -384,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2018-05-19 11:00:00 / 修改时间：16:30:00" itemprop="dateCreated datePublished" datetime="2018-05-19T11:00:00+08:00">2018-05-19</time>
+              <time title="创建时间：2018-05-28 17:00:00 / 修改时间：17:30:00" itemprop="dateCreated datePublished" datetime="2018-05-28T17:00:00+08:00">2018-05-28</time>
             
 
             
@@ -406,7 +410,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
 
                 
                 
@@ -421,8 +425,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/C-C/c-problem-1/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/C-C/c-problem-1/" itemprop="commentsCount"></span>
+                <a href="/深度学习/resnet/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/深度学习/resnet/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -452,7 +456,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.4k</span>
+                <span title="本文字数">6.7k</span>
               
 
               
@@ -466,7 +470,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -487,39 +491,33 @@
 
       
         <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
-<p><strong>摘要</strong>：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof</p>
-<p><strong>关键字</strong>：C/C++</p>
+<p><strong>摘要</strong>：终于到了介绍ResNet系列的时候了。ResNet真的很好用，特别时shortcut的想法真的厉害。最近，又推出了改进版本ResNeXt，新版本结合了Inception多支路的思想。</p>
+<p><strong>关键字</strong>：深度学习, ResNet, ResNeXt</p>
 <a id="more"></a>
 <hr>
-<h1 id="1-友元"><a href="#1-友元" class="headerlink" title="1. 友元"></a>1. 友元</h1><p>关于友元函数，可以看这篇文章：<a href="https://blog.csdn.net/jackystudio/article/details/11799777" target="_blank" rel="noopener">【C++基础之十】友元函数和友元类-偶尔e网事</a></p>
-<p>文章里说的友元的缺点是破坏封装性比较好理解，友元的优点是提高程序运行效率这点我没有太想明白。（为什么我感觉友元的优点是让程序员能少写一点代码？）</p>
-<p>文章最后提到友元不具有继承性和传递性，记一下就好。实际编程时，我还没有遇到使用友元的情况。</p>
-<h1 id="2-计时"><a href="#2-计时" class="headerlink" title="2. 计时"></a>2. 计时</h1><p>在调试程序的时候，我们经常需要记录某一段代码运行的时间。我一般是使用<code>clock()</code>来计时的。示例代码如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;    // 必须添加的头文件，C++是ctime，C是time.h</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">clock_t</span> start = clock();        <span class="comment">// clock_t 其实是long int</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">1000000</span>; i++);  <span class="comment">// 需要计时的程序段</span></span><br><span class="line">    <span class="keyword">clock_t</span> end = clock();</span><br><span class="line">    <span class="keyword">double</span> time_used = <span class="number">1.0</span> * (end - start) / CLOCKS_PER_SEC;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"程序用时： %.5f秒"</span>, time_used);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果有过硬件开发经验的同学应该能明白，函数<code>clock()</code>获取的是滴答计数器的值。可以形象地理解：计算机的底层（或硬件或软件模拟）能不断地发出滴答声，并且滴答声的频率是稳定的，每秒发出<code>CLOCKS_PER_SEC</code>次滴答声。程序一开始运行，就有一个计数器启动，不断记录它听到的滴答声的次数。<code>clock()</code>获取到的就是这个计数器的值。<code>clock() / CLOCKS_PER_SEC</code>得到的就是从程序开始运行到当前经过几秒。</p>
-<p>在我的电脑上，<code>CLOCKS_PER_SEC</code>=1000000，类型<code>clock_t</code>是<code>long int</code>的别名，在不同的硬件上，这些值不一定相同。</p>
-<blockquote>
-<p><strong>注意</strong>：这种计时方式有最大可计时时间。我们可以算一下，<code>long int</code>型最大为$2^{31}$，$2^{31} \div 1000000=2147$，2147秒大约是35分钟。也就是说程序运行后，每过大约35分钟，<code>clock()</code>取到的值会再次回到0。网上也有教程说最大计时时间为72分钟，可能是当成了unsigned long在算了。</p>
-</blockquote>
-<h1 id="3-cout与printf"><a href="#3-cout与printf" class="headerlink" title="3. cout与printf"></a>3. cout与printf</h1><p>cout比printf要方便一点，因为可以不用写格式控制字符串<code>%d</code>、<code>%s</code>等。重载运算符后也能让cout输出非基本类型的变量。</p>
-<p>但是printf比cout在IO效率上要更高一些，当然也有方法可以弥补这点，可以看这篇文章：<a href="https://blog.csdn.net/l2580258/article/details/51319387" target="_blank" rel="noopener">cin与scanf cout与printf效率问题</a></p>
-<h1 id="4-结构体内存对齐"><a href="#4-结构体内存对齐" class="headerlink" title="4. 结构体内存对齐"></a>4. 结构体内存对齐</h1><p>这个涉及到比较底层的问题，用来解释<code>sizeof(结构体)</code>得到的结果为什么和直观想的不一样。可以看这篇文章：<a href="https://www.zhihu.com/question/27862634/answer/38447033" target="_blank" rel="noopener">如何理解 struct 的内存对齐？-Courtier的回答</a></p>
-<p>注意，形似下方代码的东西不是普通结构体，是<code>位域</code>，它的内存占用分析更复杂，这里就不展开了：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bs</span>   // 位域</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">　<span class="keyword">int</span> a:<span class="number">8</span>;  <span class="comment">// 8表示占用8个bit</span></span><br><span class="line">　<span class="keyword">int</span> b:<span class="number">2</span>;</span><br><span class="line">　<span class="keyword">int</span> c:<span class="number">6</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="5-虚函数"><a href="#5-虚函数" class="headerlink" title="5. 虚函数"></a>5. 虚函数</h1><p>定义一个函数为虚函数，不代表函数为不被实现的函数。定义他为虚函数是为了允许用基类的指针来调用子类的这个函数。</p>
-<p>定义一个函数为纯虚函数，才代表函数没有被实现。纯虚函数定义如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
-<h1 id="6-关于派生类"><a href="#6-关于派生类" class="headerlink" title="6. 关于派生类"></a>6. 关于派生类</h1><ul>
-<li>公有继承的公有成员还是公有的，可以被访问</li>
-<li>公有继承的私有成员不被继承，所以不能访问</li>
-<li>公有继承的保护成员可以被类的方法访问，不能被对象访问</li>
-<li>私有继承的公有成员会变成派生类的私有成员，也不能被访问</li>
-</ul>
-<h1 id="7-auto关键字"><a href="#7-auto关键字" class="headerlink" title="7. auto关键字"></a>7. auto关键字</h1><p>auto关键字在C++11以后有了不同于以前的含义。以前，auto关键字用来表示该变量是具有自动存储期的局部变量。如下面代码所示：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++11标准以前，auto关键字的用法</span></span><br><span class="line"><span class="keyword">int</span> a;  <span class="comment">// 平时，auto关键字可省略</span></span><br><span class="line"><span class="keyword">auto</span> <span class="keyword">int</span> a; <span class="comment">// auto表示有自动存储期的局部变量，与上句效果相同</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> a;   <span class="comment">// 静态变量没有自动存储器</span></span><br></pre></td></tr></table></figure>
-<p>C++11以后，auto表示该变量的类型由编译器推理。如下面代码所示：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++11标准以后</span></span><br><span class="line"><span class="keyword">int</span> a;  </span><br><span class="line"><span class="keyword">auto</span> b = a; <span class="comment">// b没有类型，但编译器会自动推理出b的类型为int</span></span><br></pre></td></tr></table></figure>
-<p>新标准下的auto主要在定义STL的迭代器时用到，因为这些迭代器类型名字都太长了（比如<code>std::vector&lt;std::string&gt;::iterator</code>），使用auto关键字可以少打很多字。</p>
-<h1 id="8-指针的sizeof"><a href="#8-指针的sizeof" class="headerlink" title="8. 指针的sizeof"></a>8. 指针的sizeof</h1><p>这其实是一个值得注意的地方，因为老教材通常默认是32位机器。32位程序，sizeof(指针)=4；64位程序，sizeof(指针)=8</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>* p = &amp;a;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(p) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h1><p>说到残差网络ResNet，大家应该都不默认。近几年，深度学习领域的论文井喷，注重benchmark的文章不断强调自己把精度提高了多少多少点，注重算法思想的文章则宣称自己的算法多么多么有效。</p>
+<p>但是这些文章中，鱼龙混杂，或者夸大的成分太多，我们该如何判断？工业界给了我们答案。如果一篇文章提到的思想能在工业被广泛使用的话，那一定是篇好文章。ResNet就是其中之一。</p>
+<p>ResNet由微软亚研院MSRA的几位大佬所写，一发表，就引起巨大关注。就我个人的看法，ResNet真的是神作，在当时大家对一层一层堆叠的网络形成思维惯性的时候，shortcut的思想真的是跨越性的。</p>
+<p>你能想到100+层的网络，运算量却和16层的VGG差不多，精度提高一个档次。而且模块性、可移植性很强。默默膜拜下大神。</p>
+<h1 id="1-ResNet"><a href="#1-ResNet" class="headerlink" title="1. ResNet"></a>1. ResNet</h1><p>网络上介绍ResNet的文章很多，比如：<a href="https://zhuanlan.zhihu.com/p/31852747" target="_blank" rel="noopener">你必须要知道CNN模型：ResNet-小白将的文章</a></p>
+<p>就我个人的看法，ResNet的核心就是shortcut的出现。图1是ResNet的基本模块。</p>
+<div align="center"><img src="./shortcut.png"></div><br><div align="center">图1</div>
+
+<p>图1如果去掉旁路，那就是经典的堆叠式的网络。ResNet的贡献就是引入了旁路（shortcut）。旁路（shortcut）的引入一方面使得梯度的后向传播更加容易，使更深的网络得以有效训练；另一方面，也使得每个基本模块的学习任务从学习一个绝对量变为学习相对上一个基本模块的偏移量。</p>
+<p>ResNet的网络结构很简单，就是把这些基本模块堆起来，形成不同层数的网络。基本模块的简单堆叠也使得ResNet可以很轻松地移植到其他网络中。图2是论文里提到的几种结构，它们都是不同数量的基本模块叠加得到的。</p>
+<div align="center"><img src="./network.png"></div><br><div align="center">图2</div>
+
+<p>还有一点令人惊讶的是，ResNet100+层的网络，运算量却和16层的VGG差不多，关于这点，可以看我之前的文章：<a href="https://imlogm.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/vgg-complexity/">以VGG为例，分析深度网络的计算量和参数量</a></p>
+<p>默默放上一段用Keras写的ResNet，如果熟悉Keras的话，相信通过代码能很快理解ResNet的结构。当然，现在ResNet已经被Keras内置，只需要一句代码就能写出ResNet。</p>
+<p>代码里说的conv_block和identity_block其实就是ResNet的基本模块，它们的区别是conv_block的旁路是直接一条线，identity_block的旁路有一个卷积层。之所以有的基本模块旁路一条线，有的基础模块旁路会有卷积层，是为了保证旁路出来的featuremap和主路的featuremap尺寸一致，这样它们才能相加。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">############################################################</span></span><br><span class="line"><span class="comment">#  Resnet Graph</span></span><br><span class="line"><span class="comment">############################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Code adopted from:</span></span><br><span class="line"><span class="comment"># https://github.com/fchollet/deep-learning-models/blob/master/resnet50.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">resnet_graph</span><span class="params">(input_image, architecture, stage5=False)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> architecture <span class="keyword">in</span> [<span class="string">"resnet50"</span>, <span class="string">"resnet101"</span>]</span><br><span class="line">    <span class="comment"># Stage 1</span></span><br><span class="line">    x = KL.ZeroPadding2D((<span class="number">3</span>, <span class="number">3</span>))(input_image)</span><br><span class="line">    x = KL.Conv2D(<span class="number">64</span>, (<span class="number">7</span>, <span class="number">7</span>), strides=(<span class="number">2</span>, <span class="number">2</span>), name=<span class="string">'conv1'</span>, use_bias=<span class="keyword">True</span>)(x)</span><br><span class="line">    x = BatchNorm(axis=<span class="number">3</span>, name=<span class="string">'bn_conv1'</span>)(x)</span><br><span class="line">    x = KL.Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line">    C1 = x = KL.MaxPooling2D((<span class="number">3</span>, <span class="number">3</span>), strides=(<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">"same"</span>)(x)</span><br><span class="line">    <span class="comment"># Stage 2</span></span><br><span class="line">    x = conv_block(x, <span class="number">3</span>, [<span class="number">64</span>, <span class="number">64</span>, <span class="number">256</span>], stage=<span class="number">2</span>, block=<span class="string">'a'</span>, strides=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    x = identity_block(x, <span class="number">3</span>, [<span class="number">64</span>, <span class="number">64</span>, <span class="number">256</span>], stage=<span class="number">2</span>, block=<span class="string">'b'</span>)</span><br><span class="line">    C2 = x = identity_block(x, <span class="number">3</span>, [<span class="number">64</span>, <span class="number">64</span>, <span class="number">256</span>], stage=<span class="number">2</span>, block=<span class="string">'c'</span>)</span><br><span class="line">    <span class="comment"># Stage 3</span></span><br><span class="line">    x = conv_block(x, <span class="number">3</span>, [<span class="number">128</span>, <span class="number">128</span>, <span class="number">512</span>], stage=<span class="number">3</span>, block=<span class="string">'a'</span>)</span><br><span class="line">    x = identity_block(x, <span class="number">3</span>, [<span class="number">128</span>, <span class="number">128</span>, <span class="number">512</span>], stage=<span class="number">3</span>, block=<span class="string">'b'</span>)</span><br><span class="line">    x = identity_block(x, <span class="number">3</span>, [<span class="number">128</span>, <span class="number">128</span>, <span class="number">512</span>], stage=<span class="number">3</span>, block=<span class="string">'c'</span>)</span><br><span class="line">    C3 = x = identity_block(x, <span class="number">3</span>, [<span class="number">128</span>, <span class="number">128</span>, <span class="number">512</span>], stage=<span class="number">3</span>, block=<span class="string">'d'</span>)</span><br><span class="line">    <span class="comment"># Stage 4</span></span><br><span class="line">    x = conv_block(x, <span class="number">3</span>, [<span class="number">256</span>, <span class="number">256</span>, <span class="number">1024</span>], stage=<span class="number">4</span>, block=<span class="string">'a'</span>)</span><br><span class="line">    block_count = &#123;<span class="string">"resnet50"</span>: <span class="number">5</span>, <span class="string">"resnet101"</span>: <span class="number">22</span>&#125;[architecture]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(block_count):</span><br><span class="line">        x = identity_block(x, <span class="number">3</span>, [<span class="number">256</span>, <span class="number">256</span>, <span class="number">1024</span>], stage=<span class="number">4</span>, block=chr(<span class="number">98</span> + i))</span><br><span class="line">    C4 = x</span><br><span class="line">    <span class="comment"># Stage 5</span></span><br><span class="line">    <span class="keyword">if</span> stage5:</span><br><span class="line">        x = conv_block(x, <span class="number">3</span>, [<span class="number">512</span>, <span class="number">512</span>, <span class="number">2048</span>], stage=<span class="number">5</span>, block=<span class="string">'a'</span>)</span><br><span class="line">        x = identity_block(x, <span class="number">3</span>, [<span class="number">512</span>, <span class="number">512</span>, <span class="number">2048</span>], stage=<span class="number">5</span>, block=<span class="string">'b'</span>)</span><br><span class="line">        C5 = x = identity_block(x, <span class="number">3</span>, [<span class="number">512</span>, <span class="number">512</span>, <span class="number">2048</span>], stage=<span class="number">5</span>, block=<span class="string">'c'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        C5 = <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">return</span> [C1, C2, C3, C4, C5]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">identity_block</span><span class="params">(input_tensor, kernel_size, filters, stage, block,</span></span></span><br><span class="line"><span class="function"><span class="params">                   use_bias=True)</span>:</span></span><br><span class="line">    <span class="string">"""The identity_block is the block that has no conv layer at shortcut</span></span><br><span class="line"><span class="string">    # Arguments</span></span><br><span class="line"><span class="string">        input_tensor: input tensor</span></span><br><span class="line"><span class="string">        kernel_size: defualt 3, the kernel size of middle conv layer at main path</span></span><br><span class="line"><span class="string">        filters: list of integers, the nb_filters of 3 conv layer at main path</span></span><br><span class="line"><span class="string">        stage: integer, current stage label, used for generating layer names</span></span><br><span class="line"><span class="string">        block: 'a','b'..., current block label, used for generating layer names</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    nb_filter1, nb_filter2, nb_filter3 = filters</span><br><span class="line">    conv_name_base = <span class="string">'res'</span> + str(stage) + block + <span class="string">'_branch'</span></span><br><span class="line">    bn_name_base = <span class="string">'bn'</span> + str(stage) + block + <span class="string">'_branch'</span></span><br><span class="line"></span><br><span class="line">    x = KL.Conv2D(nb_filter1, (<span class="number">1</span>, <span class="number">1</span>), name=conv_name_base + <span class="string">'2a'</span>,</span><br><span class="line">                  use_bias=use_bias)(input_tensor)</span><br><span class="line">    x = BatchNorm(axis=<span class="number">3</span>, name=bn_name_base + <span class="string">'2a'</span>)(x)</span><br><span class="line">    x = KL.Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">    x = KL.Conv2D(nb_filter2, (kernel_size, kernel_size), padding=<span class="string">'same'</span>,</span><br><span class="line">                  name=conv_name_base + <span class="string">'2b'</span>, use_bias=use_bias)(x)</span><br><span class="line">    x = BatchNorm(axis=<span class="number">3</span>, name=bn_name_base + <span class="string">'2b'</span>)(x)</span><br><span class="line">    x = KL.Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">    x = KL.Conv2D(nb_filter3, (<span class="number">1</span>, <span class="number">1</span>), name=conv_name_base + <span class="string">'2c'</span>,</span><br><span class="line">                  use_bias=use_bias)(x)</span><br><span class="line">    x = BatchNorm(axis=<span class="number">3</span>, name=bn_name_base + <span class="string">'2c'</span>)(x)</span><br><span class="line"></span><br><span class="line">    x = KL.Add()([x, input_tensor])</span><br><span class="line">    x = KL.Activation(<span class="string">'relu'</span>, name=<span class="string">'res'</span> + str(stage) + block + <span class="string">'_out'</span>)(x)</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_block</span><span class="params">(input_tensor, kernel_size, filters, stage, block,</span></span></span><br><span class="line"><span class="function"><span class="params">               strides=<span class="params">(<span class="number">2</span>, <span class="number">2</span>)</span>, use_bias=True)</span>:</span></span><br><span class="line">    <span class="string">"""conv_block is the block that has a conv layer at shortcut</span></span><br><span class="line"><span class="string">    # Arguments</span></span><br><span class="line"><span class="string">        input_tensor: input tensor</span></span><br><span class="line"><span class="string">        kernel_size: defualt 3, the kernel size of middle conv layer at main path</span></span><br><span class="line"><span class="string">        filters: list of integers, the nb_filters of 3 conv layer at main path</span></span><br><span class="line"><span class="string">        stage: integer, current stage label, used for generating layer names</span></span><br><span class="line"><span class="string">        block: 'a','b'..., current block label, used for generating layer names</span></span><br><span class="line"><span class="string">    Note that from stage 3, the first conv layer at main path is with subsample=(2,2)</span></span><br><span class="line"><span class="string">    And the shortcut should have subsample=(2,2) as well</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    nb_filter1, nb_filter2, nb_filter3 = filters</span><br><span class="line">    conv_name_base = <span class="string">'res'</span> + str(stage) + block + <span class="string">'_branch'</span></span><br><span class="line">    bn_name_base = <span class="string">'bn'</span> + str(stage) + block + <span class="string">'_branch'</span></span><br><span class="line"></span><br><span class="line">    x = KL.Conv2D(nb_filter1, (<span class="number">1</span>, <span class="number">1</span>), strides=strides,</span><br><span class="line">                  name=conv_name_base + <span class="string">'2a'</span>, use_bias=use_bias)(input_tensor)</span><br><span class="line">    x = BatchNorm(axis=<span class="number">3</span>, name=bn_name_base + <span class="string">'2a'</span>)(x)</span><br><span class="line">    x = KL.Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">    x = KL.Conv2D(nb_filter2, (kernel_size, kernel_size), padding=<span class="string">'same'</span>,</span><br><span class="line">                  name=conv_name_base + <span class="string">'2b'</span>, use_bias=use_bias)(x)</span><br><span class="line">    x = BatchNorm(axis=<span class="number">3</span>, name=bn_name_base + <span class="string">'2b'</span>)(x)</span><br><span class="line">    x = KL.Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">    x = KL.Conv2D(nb_filter3, (<span class="number">1</span>, <span class="number">1</span>), name=conv_name_base + <span class="string">'2c'</span>, use_bias=use_bias)(x)</span><br><span class="line">    x = BatchNorm(axis=<span class="number">3</span>, name=bn_name_base + <span class="string">'2c'</span>)(x)</span><br><span class="line"></span><br><span class="line">    shortcut = KL.Conv2D(nb_filter3, (<span class="number">1</span>, <span class="number">1</span>), strides=strides,</span><br><span class="line">                         name=conv_name_base + <span class="string">'1'</span>, use_bias=use_bias)(input_tensor)</span><br><span class="line">    shortcut = BatchNorm(axis=<span class="number">3</span>, name=bn_name_base + <span class="string">'1'</span>)(shortcut)</span><br><span class="line"></span><br><span class="line">    x = KL.Add()([x, shortcut])</span><br><span class="line">    x = KL.Activation(<span class="string">'relu'</span>, name=<span class="string">'res'</span> + str(stage) + block + <span class="string">'_out'</span>)(x)</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<h1 id="2-ResNeXt"><a href="#2-ResNeXt" class="headerlink" title="2. ResNeXt"></a>2. ResNeXt</h1><p>ResNeXt是这个系列的新文章，是ResNet的升级版，升级内容为引入Inception的多支路的思想。</p>
+<p>同样，网络上也有非常好的解读的文章：<a href="https://zhuanlan.zhihu.com/p/32913695" target="_blank" rel="noopener">深度学习——分类之ResNeXt-范星.xfanplus的文章</a></p>
+<p>如果你对ResNet和Inception都比较熟悉的话，那么其实只要看图3就能明白ResNeXt在做什么了。</p>
+<div align="center"><img src="./ResNeXt.jpg"></div><br><div align="center">图3</div>
+
+<p>图3中左图是ResNet的基本模块，右图是ResNeXt的基本模块。容易发现，ResNeXt就是把ResNet的单个卷积改成了多支路的卷积。</p>
+<p>作者说ResNeXt的目的是为了保持ResNet的高可移植性优点，同时继续提高精度。文章中还顺便吐槽了Inception的缺点。也就是我在上一篇介绍Inception的文章（<a href="https://imlogm.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/inception/">聊一聊Inception系列</a>）中说的：Inception系列的前两篇文章很惊艳，但是后两篇文章炼丹痕迹越来越重。直到Xception出现后，可移植性增强不少。</p>
 
       
     </div>
@@ -540,7 +538,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
+            <a href="/tags/深度学习/" <i class="fa fa-tag"></i> 深度学习</a>
+          
+            <a href="/tags/ResNet/" <i class="fa fa-tag"></i> ResNet</a>
+          
+            <a href="/tags/ResNeXt/" <i class="fa fa-tag"></i> ResNeXt</a>
           
         </div>
       
@@ -553,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/深度学习/inception/" rel="next" title="聊一聊Inception系列（GoogLeNet、Inception、Xception）">
-                <i class="fa fa-chevron-left"></i> 聊一聊Inception系列（GoogLeNet、Inception、Xception）
+              <a href="/图像处理/multi-seed-region-grow/" rel="next" title="多种子的区域生长算法">
+                <i class="fa fa-chevron-left"></i> 多种子的区域生长算法
               </a>
             
           </div>
@@ -563,8 +565,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/图像处理/multi-seed-region-grow/" rel="prev" title="多种子的区域生长算法">
-                多种子的区域生长算法 <i class="fa fa-chevron-right"></i>
+              <a href="/uncategorized/resnet/新建文本文档/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -774,7 +776,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-友元"><span class="nav-number">1.</span> <span class="nav-text">1. 友元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-计时"><span class="nav-number">2.</span> <span class="nav-text">2. 计时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-cout与printf"><span class="nav-number">3.</span> <span class="nav-text">3. cout与printf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-结构体内存对齐"><span class="nav-number">4.</span> <span class="nav-text">4. 结构体内存对齐</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-虚函数"><span class="nav-number">5.</span> <span class="nav-text">5. 虚函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-关于派生类"><span class="nav-number">6.</span> <span class="nav-text">6. 关于派生类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-auto关键字"><span class="nav-number">7.</span> <span class="nav-text">7. auto关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-指针的sizeof"><span class="nav-number">8.</span> <span class="nav-text">8. 指针的sizeof</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-前言"><span class="nav-number">1.</span> <span class="nav-text">0. 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-ResNet"><span class="nav-number">2.</span> <span class="nav-text">1. ResNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ResNeXt"><span class="nav-number">3.</span> <span class="nav-text">2. ResNeXt</span></a></li></ol></div>
             
 
           </div>

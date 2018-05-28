@@ -1,0 +1,17 @@
+<h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h1><p>说到残差网络ResNet，大家应该都不默认。近几年，深度学习领域的论文井喷，注重benchmark的文章不断强调自己把精度提高了多少多少点，注重算法思想的文章则宣称自己的算法多么多么有效。</p>
+<p>但是这些文章中，鱼龙混杂，或者夸大的成分太多，我们该如何判断？工业界给了我们答案。如果一篇文章提到的思想能在工业被广泛使用的话，那一定是篇好文章。ResNet就是其中之一。</p>
+<p>ResNet由微软亚研院MSRA的几位大佬所写，一发表，就引起巨大关注。就我个人的看法，ResNet真的是神作，在当时大家对一层一层堆叠的网络形成思维惯性的时候，shortcut的思想真的很厉害。</p>
+<p>100+层的网络，运算量却和16层的VGG差不多，精度提高一个档次。而且模块性、可移植性很强。默默膜拜下大神。</p>
+<h1 id="1-ResNet"><a href="#1-ResNet" class="headerlink" title="1. ResNet"></a>1. ResNet</h1><p>网络上介绍ResNet的文章很多，比如：<a href="https://zhuanlan.zhihu.com/p/31852747">你必须要知道CNN模型：ResNet-小白将的文章</a></p>
+<p>就我个人的看法，ResNet的核心就是shortcut的出现。图1是ResNet的基本模块。</p>
+<p>【图1】</p>
+<p>图1如果去掉旁路，那就是经典的堆叠式的网络。ResNet的贡献就是引入了旁路（shortcut）。旁路（shortcut）的引入一方面使得梯度的后向传播更加容易，使更深的网络得以有效训练；另一方面，也使得每个基本模块的学习任务从学习一个绝对量变为学习相对上一个基本模块的偏移量。</p>
+<p>ResNet的网络结构很简单，就是把这些基本模块堆起来，形成不同层数的网络。基本模块的简单堆叠也使得ResNet可以很轻松地移植到其他网络中。图2是论文里提到的几种结构，它们都是不同数量的基本模块叠加得到的。</p>
+<p>【图2】</p>
+<p>还有一点令人惊讶的是，ResNet100+层的网络，运算量却和16层的VGG差不多，关于这点，可以看我之前的文章：【】</p>
+<h1 id="2-ResNeXt"><a href="#2-ResNeXt" class="headerlink" title="2. ResNeXt"></a>2. ResNeXt</h1><p>ResNeXt是这个系列的新文章，是ResNet的升级版，升级内容为引入Inception的多支路的思想。</p>
+<p>同样，网络上也有非常好的解读的文章：<a href="https://zhuanlan.zhihu.com/p/32913695">深度学习——分类之ResNeXt-范星.xfanplus的文章</a></p>
+<p>如果你对ResNet和Inception都比较熟悉的话，那么其实只要看图3就能明白ResNeXt在做什么了。</p>
+<p>【图3】</p>
+<p>图3中左图是ResNet的基本模块，右图是ResNeXt的基本模块。容易发现，ResNeXt就是把ResNet的单个卷积改成了多支路的卷积。</p>
+<p>作者说ResNeXt的目的是为了保持ResNet的高可移植性优点，同时继续提高精度。文章中还顺便吐槽了Inception的缺点。也就是我在上一篇介绍Inception的文章中说的【】：Inception系列的前两篇文章很惊艳，但是后两篇文章炼丹痕迹越来越重。直到Xception出现后，可移植性增强不少。</p>
