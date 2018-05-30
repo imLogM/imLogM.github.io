@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://imLogM.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/multi-seed-region-grow/</loc>
+    <lastmod>2018-05-30T06:00:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>多种子的区域生长算法</title>
+        <pubTime>2018-05-22T02:00:00.000Z</pubTime>
+        
+        <tag>图像处理</tag>
+         
+        <tag>种子生长</tag>
+         
+        <tag>区域生长</tag>
+         
+         
+           
+             
+              <breadCrumb title="图像处理" url="https://imLogM.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/resnet/</loc>
     <lastmod>2018-05-28T09:30:00.000Z</lastmod>
     <data>
@@ -21,30 +45,6 @@
            
              
               <breadCrumb title="深度学习" url="https://imLogM.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://imLogM.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/multi-seed-region-grow/</loc>
-    <lastmod>2018-05-22T03:00:00.000Z</lastmod>
-    <data>
-        <display>
-        <title>多种子的区域生长算法</title>
-        <pubTime>2018-05-22T02:00:00.000Z</pubTime>
-        
-        <tag>图像处理</tag>
-         
-        <tag>种子生长</tag>
-         
-        <tag>区域生长</tag>
-         
-         
-           
-             
-              <breadCrumb title="图像处理" url="https://imLogM.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
           
         </display>
     </data>
