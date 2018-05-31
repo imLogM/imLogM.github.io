@@ -123,6 +123,8 @@
 <meta property="og:image" content="https://imlogm.github.io/图像处理/multi-seed-region-grow/4.png">
 <meta property="og:image" content="https://imlogm.github.io/图像处理/multi-seed-region-grow/5.png">
 <meta property="og:image" content="https://imlogm.github.io/图像处理/multi-seed-region-grow/6.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/multi-seed-region-grow/11.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/multi-seed-region-grow/12.png">
 <meta property="og:updated_time" content="2018-05-30T06:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多种子的区域生长算法">
@@ -471,7 +473,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">962</span>
+                <span title="本文字数">1.4k</span>
               
 
               
@@ -528,11 +530,14 @@
 <p>4、重复上述步骤，直到全图不存在undetermined的点</p>
 </blockquote>
 <h1 id="4-TODO"><a href="#4-TODO" class="headerlink" title="4. TODO"></a>4. TODO</h1><p>我对现在的算法还不是很满意，其一，我没有做太多优化，代码运行卡卡的；其二，我用的灰度图，以及“差值/阈值”的方式来判断是否相似，阈值不是自适应的。</p>
+<blockquote>
+<p>注：新版本添加了自动寻找阈值的demo，详见本文最后一节</p>
+</blockquote>
 <p>对于图片尺寸越大越卡这个问题，可以在读图片的时候统一resize成256×256，大多数追求速度的图像处理算法都会有这步。</p>
 <p>对于彩色图，用3个通道的距离来判断相似度会更好。</p>
 <p>以上两个问题，我为了保持算法的原汁原味，就没有添加。（其实是我懒得写了～）</p>
 <blockquote>
-<p>注：关于彩色图那点，Github上的最新版本已经添加了相关代码。思路是RGB三个通道的差值取平方和。Delta = R^2 + G^2 + B^2 。</p>
+<p>注：关于彩色图那点，最新版本已经添加了相关代码。思路是RGB三个通道的差值取平方和。Delta = R^2 + G^2 + B^2 。</p>
 </blockquote>
 <h1 id="5-代码"><a href="#5-代码" class="headerlink" title="5. 代码"></a>5. 代码</h1><p>详见Github：<a href="https://github.com/imLogM/multi_seed_region_grow" target="_blank" rel="noopener">https://github.com/imLogM/multi_seed_region_grow</a></p>
 <h1 id="6-效果"><a href="#6-效果" class="headerlink" title="6. 效果"></a>6. 效果</h1><ul>
@@ -551,6 +556,28 @@
 <div align="center"><img src="./5.png"></div>
 
 <div align="center"><img src="./6.png"></div>
+
+<h1 id="7-关于阈值自适应"><a href="#7-关于阈值自适应" class="headerlink" title="7. 关于阈值自适应"></a>7. 关于阈值自适应</h1><p>新版本的代码中，已经添加了阈值自适应的demo。想法来自于二值化领域的OSTU（大津法），不懂大津法的可以搜索下，虽然属于不同领域，但算法思想可以借鉴。我在demo中的具体做法如下：</p>
+<blockquote>
+<p>1、threshold的取值在一定范围内，遍历所有可取的threshold</p>
+</blockquote>
+<blockquote>
+<p>2、对于一个取到的threshold，区域生长算法可以得到分割后的N个区域。计算同一区域内的像素值的方差var(same_region)以及不同区域间像素平均值的差值delta(mean(different_region))</p>
+</blockquote>
+<blockquote>
+<p>3、用loss表征分割的好坏，公式中a和b是手动设置的参数，loss越小说明分割得越好：$$loss=a \div delta(mean(different-region)) + b \times Var(same-region)$$</p>
+</blockquote>
+<blockquote>
+<p>4、遍历所有可取的threshold，求出各自的loss，取loss最小值对应的threshold</p>
+</blockquote>
+<ul>
+<li><p>原图</p>
+<div align="center"><img src="./11.png"></div>
+</li>
+<li><p>结果</p>
+<div align="center"><img src="./12.png"></div></li>
+</ul>
+
       
     </div>
 
@@ -808,7 +835,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-题外话"><span class="nav-number">1.</span> <span class="nav-text">1. 题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-单种子的区域生长"><span class="nav-number">2.</span> <span class="nav-text">2. 单种子的区域生长</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-多种子的区域生长"><span class="nav-number">3.</span> <span class="nav-text">3. 多种子的区域生长</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-TODO"><span class="nav-number">4.</span> <span class="nav-text">4. TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-代码"><span class="nav-number">5.</span> <span class="nav-text">5. 代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-效果"><span class="nav-number">6.</span> <span class="nav-text">6. 效果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-题外话"><span class="nav-number">1.</span> <span class="nav-text">1. 题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-单种子的区域生长"><span class="nav-number">2.</span> <span class="nav-text">2. 单种子的区域生长</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-多种子的区域生长"><span class="nav-number">3.</span> <span class="nav-text">3. 多种子的区域生长</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-TODO"><span class="nav-number">4.</span> <span class="nav-text">4. TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-代码"><span class="nav-number">5.</span> <span class="nav-text">5. 代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-效果"><span class="nav-number">6.</span> <span class="nav-text">6. 效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-关于阈值自适应"><span class="nav-number">7.</span> <span class="nav-text">7. 关于阈值自适应</span></a></li></ol></div>
             
 
           </div>
@@ -840,7 +867,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">19k</span>
   
 
   
