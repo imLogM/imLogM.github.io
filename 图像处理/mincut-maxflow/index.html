@@ -109,13 +109,13 @@
 
 
 
-  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。 关键字：图像处理, 最小割, 最大流, 图像分割">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客的想法。 关键字：图像处理, 最小割, 最大流, 图像分割">
 <meta name="keywords" content="图像处理,最小割,最大流,图像分割">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图像分割之最小割与最大流算法">
 <meta property="og:url" content="https://imLogM.github.io/图像处理/mincut-maxflow/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。 关键字：图像处理, 最小割, 最大流, 图像分割">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客的想法。 关键字：图像处理, 最小割, 最大流, 图像分割">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/1.jpg">
 <meta property="og:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/2.jpg">
@@ -124,7 +124,7 @@
 <meta property="og:updated_time" content="2018-06-13T12:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像分割之最小割与最大流算法">
-<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。 关键字：图像处理, 最小割, 最大流, 图像分割">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客的想法。 关键字：图像处理, 最小割, 最大流, 图像分割">
 <meta name="twitter:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/1.jpg">
 
 
@@ -492,7 +492,7 @@
 
       
         <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
-<p><strong>摘要</strong>：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。</p>
+<p><strong>摘要</strong>：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客的想法。</p>
 <p><strong>关键字</strong>：图像处理, 最小割, 最大流, 图像分割</p>
 <a id="more"></a>
 <hr>
@@ -515,7 +515,7 @@
 
 <h1 id="3-关于最大流（max-flow）"><a href="#3-关于最大流（max-flow）" class="headerlink" title="3. 关于最大流（max-flow）"></a>3. 关于最大流（max-flow）</h1><p>什么是最大流呢？</p>
 <p>继续以图1为例，假如顶点s源源不断有水流出，边的权重代表该边允许通过的最大水流量，请问顶点t流入的水流量最大是多少？</p>
-<p>从顶点s到顶点t的3条路径着手分析：<br>从源点s到终点t共有3条路径：</p>
+<p>从顶点s到顶点t的3条路径着手分析，从源点s到终点t共有3条路径：</p>
 <ul>
 <li>s -&gt; a -&gt; t：流量被边”s -&gt; a”限制，最大流量为2</li>
 <li>s -&gt; b -&gt; t：流量被边”b -&gt; t”限制，最大流量为3</li>
@@ -530,7 +530,7 @@
 <p>另一种是Yuri Boykov的优化算法，参见博客：<a href="https://blog.csdn.net/ilovejohnny/article/details/52016742" target="_blank" rel="noopener">CV | Max Flow / Min Cut 最大流最小割算法学习-iLOVEJohnny的博客</a></p>
 <p>事实上，我并不打算自己再把最大流算法讲解一遍，因为最大流算法很容易在搜索引擎上搜索到。我真正要讲的是下面的部分，关于如何把最大流的结果转换到最小割。</p>
 <h1 id="5-如何把最大流的结果转换为最小割"><a href="#5-如何把最大流的结果转换为最小割" class="headerlink" title="5. 如何把最大流的结果转换为最小割"></a>5. 如何把最大流的结果转换为最小割</h1><p>网上介绍最小割和最大流往往介绍完最大流的求解方法后就不继续讲解了，我上面贴出的两篇博客都存在这个问题。这样大家肯定会有个疑惑：如何把最大流的结果转换为最小割。</p>
-<p>我以上面贴出的Ford-Fulkerson算法的博客的结果为例讲解下如何转换。如图3是最大流求解算法的最终结果。边”@/#”表示这条边最大流量为#，在最大流求解算法中该边所使用的流量为@。比如边”13/15”表示该边最大能容纳的流量为15，但在最大流求解算法中使用到的流量为13。</p>
+<p>我以上面贴出的Ford-Fulkerson算法的博客的结果为例讲解下如何转换。如图3是最大流求解算法的最终结果。边上的数字“@/#”表示这条边最大流量为#，在最大流求解算法中该边所使用的流量为@。比如边“13/15”表示该边最大能容纳的流量为15，但在最大流求解算法中使用到的流量为13。</p>
 <div align="center"><img src="./3.png"></div><br><div align="center">图3</div>
 
 <p>我们把流量已经占满的所有边去掉，得到图4：</p>
@@ -543,7 +543,7 @@
 <li>已被占满的前向边：s -&gt; A， B -&gt; E， D -&gt; t</li>
 <li>没有流量的反向边：A -&gt; B， E -&gt; D</li>
 </ul>
-<p>其中”已被占满的前向边”就是我们要求的最小割。对于图4来说，就是”s -&gt; A”、”B -&gt; E”、”D -&gt; t”这3条边。</p>
+<p>其中“已被占满的前向边”就是我们要求的最小割。对于图4来说，就是”s -&gt; A”、”B -&gt; E”、”D -&gt; t”这3条边。</p>
 <h1 id="6-如何将最小割方法应用到图像分割中"><a href="#6-如何将最小割方法应用到图像分割中" class="headerlink" title="6. 如何将最小割方法应用到图像分割中"></a>6. 如何将最小割方法应用到图像分割中</h1><p>写这篇有关最小割的博客，其实是为了给下一篇博客做铺垫。下一篇博客将介绍Graph cut、Grab cut等算法是如何利用最小割来实现图像分割的。</p>
 
       
