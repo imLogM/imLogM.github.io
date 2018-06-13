@@ -109,23 +109,30 @@
 
 
 
-  <meta name="description" content="Talk is cheap, show me the code!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LogM&#39;s Blog">
-<meta property="og:url" content="https://imLogM.github.io/tags/GoogLeNet/index.html">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。 关键字：图像处理, 最小割, 最大流, 图像分割">
+<meta name="keywords" content="图像处理,最小割,最大流,图像分割">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像分割之最小割与最大流算法">
+<meta property="og:url" content="https://imLogM.github.io/图像处理/mincut-maxflow/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="Talk is cheap, show me the code!">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。 关键字：图像处理, 最小割, 最大流, 图像分割">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/1.jpg">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/2.jpg">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/3.png">
+<meta property="og:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/4.png">
+<meta property="og:updated_time" content="2018-06-13T12:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LogM&#39;s Blog">
-<meta name="twitter:description" content="Talk is cheap, show me the code!">
+<meta name="twitter:title" content="图像分割之最小割与最大流算法">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。 关键字：图像处理, 最小割, 最大流, 图像分割">
+<meta name="twitter:image" content="https://imlogm.github.io/图像处理/mincut-maxflow/1.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="https://imLogM.github.io/tags/GoogLeNet/"/>
+  <link rel="canonical" href="https://imLogM.github.io/图像处理/mincut-maxflow/"/>
 
 
 
@@ -135,7 +142,7 @@
   };
 </script>
 
-  <title>标签: GoogLeNet | LogM's Blog</title>
+  <title>图像分割之最小割与最大流算法 | LogM's Blog</title>
   
 
 
@@ -182,7 +189,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/imLogM" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -240,7 +247,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
@@ -276,28 +283,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -346,58 +331,303 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>GoogLeNet<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/图像处理/mincut-maxflow/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LogM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/daodao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LogM's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/深度学习/inception/" itemprop="url">
-              
-                <span itemprop="name">聊一聊Inception系列（GoogLeNet、Inception、Xception）</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">图像分割之最小割与最大流算法
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-17T20:00:00+08:00"
-              content="2018-05-17" >
-          05-17
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-13 18:00:00 / 修改时间：20:00:00" itemprop="dateCreated datePublished" datetime="2018-06-13T18:00:00+08:00">2018-06-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图像处理/" itemprop="url" rel="index"><span itemprop="name">图像处理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/图像处理/mincut-maxflow/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/图像处理/mincut-maxflow/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
+<p><strong>摘要</strong>：图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。</p>
+<p><strong>关键字</strong>：图像处理, 最小割, 最大流, 图像分割</p>
+<a id="more"></a>
+<hr>
+<h1 id="1-题外话"><a href="#1-题外话" class="headerlink" title="1. 题外话"></a>1. 题外话</h1><p>图的最小割和最大流问题是图论中比较经典的问题，也是各大算法竞赛中经常出现的问题。图像分割中”Graph Cut”、”Grab Cut”等方法都有使用到最小割算法。网上资料介绍了Graph cut和Grab cut中图的构建方法，但对最小割的求解一笔带过。所以萌生了写一篇介绍图的最小割和最大流的博客。</p>
+<h1 id="2-关于最小割（min-cut）"><a href="#2-关于最小割（min-cut）" class="headerlink" title="2. 关于最小割（min-cut）"></a>2. 关于最小割（min-cut）</h1><p>假设大家对图论知识已经有一定的了解。如图1所示，是一个有向带权图，共有4个顶点和5条边。每条边上的箭头代表了边的方向，每条边上的数字代表了边的权重。</p>
+<p><code>G = &lt; V, E &gt;</code>是图论中对图的表示方式，其中V表示顶点(vertex)所构成的集合，E表示边(edge)所构成的集合。顶点V的集合和边的集合E构成了图G(graph)。</p>
+<div align="center"><img width="415" height="271" src="./1.jpg"></div><br><div align="center">图1</div>
+
+<p>那什么是最小割呢？</p>
+<p>以图1为例，图1中顶点s表示源点(source)，顶点t表示终点(terminal)，从源点s到终点t共有3条路径：</p>
+<ul>
+<li>s -&gt; a -&gt; t</li>
+<li>s -&gt; b -&gt; t</li>
+<li>s -&gt; a -&gt; b-&gt; t</li>
+</ul>
+<p>现在要求剪短图中的某几条边，使得不存在从s到t的路径，并且保证所减的边的权重和最小。相信大家能很快想到解答：剪掉边”s -&gt; a”和边”b -&gt; t”。</p>
+<p>剪完以后的图如图2所示。此时，图中已不存在从s到t的路径，且所修剪的边的权重和为：2 + 3 = 5，为所有修剪方式中权重和最小的。</p>
+<p>我们把这样的修剪称为最小割。</p>
+<div align="center"><img width="415" height="271" src="./2.jpg"></div><br><div align="center">图2</div>
+
+<h1 id="3-关于最大流（max-flow）"><a href="#3-关于最大流（max-flow）" class="headerlink" title="3. 关于最大流（max-flow）"></a>3. 关于最大流（max-flow）</h1><p>什么是最大流呢？</p>
+<p>继续以图1为例，假如顶点s源源不断有水流出，边的权重代表该边允许通过的最大水流量，请问顶点t流入的水流量最大是多少？</p>
+<p>从顶点s到顶点t的3条路径着手分析：<br>从源点s到终点t共有3条路径：</p>
+<ul>
+<li>s -&gt; a -&gt; t：流量被边”s -&gt; a”限制，最大流量为2</li>
+<li>s -&gt; b -&gt; t：流量被边”b -&gt; t”限制，最大流量为3</li>
+<li>s -&gt; a -&gt; b-&gt; t：边”s -&gt; a”的流量已经被其他路径占满，没有流量</li>
+</ul>
+<p>所以，顶点t能够流入的最大水流量为：2 + 3 = 5。</p>
+<p>这就是最大流问题。所以，图1的最大流为：2 + 3 = 5。</p>
+<p>细心的你可能已经发现：图1的最小割和最大流都为5。是的，经过数学证明可以知道，图的最小割问题可以转换为最大流问题。所以，算法上在处理最小割问题时，往往先转换为最大流问题。</p>
+<p>那如何凭直觉解释最小割和最大流存在的这种关系呢？借用<a href="https://jecvay.com/2014/11/what-is-min-cut.html" target="_blank" rel="noopener">Jecvy博客</a>的一句话：1.最大流不可能大于最小割，因为最大流所有的水流都一定经过最小割那些割边，流过的水流怎么可能比水管容量还大呢？ 2.最大流不可能小于最小割，如果小，那么说明水管容量没有物尽其用，可以继续加大水流。</p>
+<h1 id="4-最大流的求解"><a href="#4-最大流的求解" class="headerlink" title="4. 最大流的求解"></a>4. 最大流的求解</h1><p>现在我们已经知道了最小割和最大流之间的关系，也理解了最小割问题往往先转换为最大流问题进行求解。那么，如何有效求解最大流问题呢？</p>
+<p>一种是Ford-Fulkerson算法，参见博客：<a href="https://blog.csdn.net/a519781181/article/details/51908303" target="_blank" rel="noopener">装逼之二 最小割与最大流（mincut &amp; maxflow）-carrotsss</a></p>
+<p>另一种是Yuri Boykov的优化算法，参见博客：<a href="https://blog.csdn.net/ilovejohnny/article/details/52016742" target="_blank" rel="noopener">CV | Max Flow / Min Cut 最大流最小割算法学习-iLOVEJohnny的博客</a></p>
+<p>事实上，我并不打算自己再把最大流算法讲解一遍，因为最大流算法很容易在搜索引擎上搜索到。我真正要讲的是下面的部分，关于如何把最大流的结果转换到最小割。</p>
+<h1 id="5-如何把最大流的结果转换为最小割"><a href="#5-如何把最大流的结果转换为最小割" class="headerlink" title="5. 如何把最大流的结果转换为最小割"></a>5. 如何把最大流的结果转换为最小割</h1><p>网上介绍最小割和最大流往往介绍完最大流的求解方法后就不继续讲解了，我上面贴出的两篇博客都存在这个问题。这样大家肯定会有个疑惑：如何把最大流的结果转换为最小割。</p>
+<p>我以上面贴出的Ford-Fulkerson算法的博客的结果为例讲解下如何转换。如图3是最大流求解算法的最终结果。边”@/#”表示这条边最大流量为#，在最大流求解算法中该边所使用的流量为@。比如边”13/15”表示该边最大能容纳的流量为15，但在最大流求解算法中使用到的流量为13。</p>
+<div align="center"><img src="./3.png"></div><br><div align="center">图3</div>
+
+<p>我们把流量已经占满的所有边去掉，得到图4：</p>
+<div align="center"><img src="./4.png"></div><br><div align="center">图4</div>
+
+<p>此时，在图4中，以顶点s为起点进行图遍历（遍历的方法可以选择BFS广度优先遍历）。遍历结束后，可以得到遍历经过的所有点：S、B、C、D。</p>
+<p>有些没学过图遍历的小伙伴可以这样理解：从顶点s出发，最多能经过哪些点。那么，很显然，最多能经过S、B、C、D这几个点。只不过人脑回答这个问题比较简单，但计算机需要特定的算法来解答，也就是上一段所说的”图遍历算法”。</p>
+<p>这样，把S、B、C、D构成一个子图（图4中紫色部分），其他的点A、E、F、t构成另一个子图（图4中黄色部分）。连接两个子图的边有两种情况：</p>
+<ul>
+<li>已被占满的前向边：s -&gt; A， B -&gt; E， D -&gt; t</li>
+<li>没有流量的反向边：A -&gt; B， E -&gt; D</li>
+</ul>
+<p>其中”已被占满的前向边”就是我们要求的最小割。对于图4来说，就是”s -&gt; A”、”B -&gt; E”、”D -&gt; t”这3条边。</p>
+<h1 id="6-如何将最小割方法应用到图像分割中"><a href="#6-如何将最小割方法应用到图像分割中" class="headerlink" title="6. 如何将最小割方法应用到图像分割中"></a>6. 如何将最小割方法应用到图像分割中</h1><p>写这篇有关最小割的博客，其实是为了给下一篇博客做铺垫。下一篇博客将介绍Graph cut、Grab cut等算法是如何利用最小割来实现图像分割的。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图像处理/" <i class="fa fa-tag"></i> 图像处理</a>
+          
+            <a href="/tags/最小割/" <i class="fa fa-tag"></i> 最小割</a>
+          
+            <a href="/tags/最大流/" <i class="fa fa-tag"></i> 最大流</a>
+          
+            <a href="/tags/图像分割/" <i class="fa fa-tag"></i> 图像分割</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/机器学习/occam-razor-NFL/" rel="next" title="奥卡姆剃刀和没有免费的午餐定理">
+                <i class="fa fa-chevron-left"></i> 奥卡姆剃刀和没有免费的午餐定理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -418,8 +648,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -566,6 +805,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-题外话"><span class="nav-number">1.</span> <span class="nav-text">1. 题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-关于最小割（min-cut）"><span class="nav-number">2.</span> <span class="nav-text">2. 关于最小割（min-cut）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-关于最大流（max-flow）"><span class="nav-number">3.</span> <span class="nav-text">3. 关于最大流（max-flow）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-最大流的求解"><span class="nav-number">4.</span> <span class="nav-text">4. 最大流的求解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-如何把最大流的结果转换为最小割"><span class="nav-number">5.</span> <span class="nav-text">5. 如何把最大流的结果转换为最小割</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-如何将最小割方法应用到图像分割中"><span class="nav-number">6.</span> <span class="nav-text">6. 如何将最小割方法应用到图像分割中</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -723,6 +978,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
@@ -764,6 +1023,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: decodeURI(window.location.pathname),
+            owner: 'imLogM',
+            repo: 'blog_gitment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '275367e83f8762f2f3ca026827903d1e80979e25',
+            
+                client_id: '0c815dd35359a2ed69dc'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
@@ -1124,6 +1407,29 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
