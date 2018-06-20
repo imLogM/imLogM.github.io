@@ -109,23 +109,25 @@
 
 
 
-  <meta name="description" content="Talk is cheap, show me the code!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LogM&#39;s Blog">
-<meta property="og:url" content="https://imLogM.github.io/tags/种子生长/index.html">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：物体检测（object detection）是计算机视觉非常重要的一个领域。在深度学习出现之前，传统方法始终无法处理好物体检测问题，在深度学习方法引入之后，物体检测领域发生了翻天覆地的变化。最著名的是RCNN系列，另外还有YOLO、SSD。这篇文章首先介绍RCNN系列。 关键字：深度学习, 物体检测, RCNN">
+<meta name="keywords" content="深度学习,物体检测,RCNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RCNN系列（R-CNN、Fast-RCNN、Faster-RCNN、Mask-RCNN）">
+<meta property="og:url" content="https://imLogM.github.io/深度学习/rcnn/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="Talk is cheap, show me the code!">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：物体检测（object detection）是计算机视觉非常重要的一个领域。在深度学习出现之前，传统方法始终无法处理好物体检测问题，在深度学习方法引入之后，物体检测领域发生了翻天覆地的变化。最著名的是RCNN系列，另外还有YOLO、SSD。这篇文章首先介绍RCNN系列。 关键字：深度学习, 物体检测, RCNN">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-20T10:30:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LogM&#39;s Blog">
-<meta name="twitter:description" content="Talk is cheap, show me the code!">
+<meta name="twitter:title" content="RCNN系列（R-CNN、Fast-RCNN、Faster-RCNN、Mask-RCNN）">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：物体检测（object detection）是计算机视觉非常重要的一个领域。在深度学习出现之前，传统方法始终无法处理好物体检测问题，在深度学习方法引入之后，物体检测领域发生了翻天覆地的变化。最著名的是RCNN系列，另外还有YOLO、SSD。这篇文章首先介绍RCNN系列。 关键字：深度学习, 物体检测, RCNN">
 
 
 
 
 
 
-  <link rel="canonical" href="https://imLogM.github.io/tags/种子生长/"/>
+  <link rel="canonical" href="https://imLogM.github.io/深度学习/rcnn/"/>
 
 
 
@@ -135,7 +137,7 @@
   };
 </script>
 
-  <title>标签: 种子生长 | LogM's Blog</title>
+  <title>RCNN系列（R-CNN、Fast-RCNN、Faster-RCNN、Mask-RCNN） | LogM's Blog</title>
   
 
 
@@ -182,7 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/imLogM" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -240,7 +242,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
@@ -276,28 +278,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -346,58 +326,307 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>种子生长<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/深度学习/rcnn/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LogM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/daodao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LogM's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/图像处理/multi-seed-region-grow/" itemprop="url">
-              
-                <span itemprop="name">多种子的区域生长算法</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">RCNN系列（R-CNN、Fast-RCNN、Faster-RCNN、Mask-RCNN）
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-22T10:00:00+08:00"
-              content="2018-05-22" >
-          05-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-20 18:00:00 / 修改时间：18:30:00" itemprop="dateCreated datePublished" datetime="2018-06-20T18:00:00+08:00">2018-06-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/深度学习/rcnn/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/深度学习/rcnn/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
+<p><strong>摘要</strong>：物体检测（object detection）是计算机视觉非常重要的一个领域。在深度学习出现之前，传统方法始终无法处理好物体检测问题，在深度学习方法引入之后，物体检测领域发生了翻天覆地的变化。最著名的是RCNN系列，另外还有YOLO、SSD。这篇文章首先介绍RCNN系列。</p>
+<p><strong>关键字</strong>：深度学习, 物体检测, RCNN</p>
+<a id="more"></a>
+<hr>
+<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>物体检测（object detection）是计算机视觉非常重要的一个领域。在深度学习出现之前，传统方法始终无法处理好物体检测问题，在深度学习方法引入之后，物体检测领域发生了翻天覆地的变化。最著名的是RCNN系列，另外还有YOLO、SSD。这篇文章首先介绍RCNN系列。</p>
+<p>网上关于RCNN系列介绍的文章非常多，比如<a href="https://www.cnblogs.com/skyfsm/p/6806246.html" target="_blank" rel="noopener">基于深度学习的目标检测技术演进：R-CNN、Fast R-CNN、Faster R-CNN-冠军的试练的博客</a>就用非常简洁明了的语言介绍了整个系列的诞生和演变过程。</p>
+<p>如果你不在意具体的实现细节的话，上面链接中的文章就已经足够了。下面贴出的文章将更加深入实现细节，我会在每篇文章之后写上自己阅读时想到的问题，也许你们也会与我有同样的问题。</p>
+<h1 id="2-R-CNN"><a href="#2-R-CNN" class="headerlink" title="2. R-CNN"></a>2. R-CNN</h1><p><a href="https://zhuanlan.zhihu.com/p/23006190" target="_blank" rel="noopener">RCNN-将CNN引入目标检测的开山之作-晓雷的文章</a></p>
+<p>RCNN的过程分4个阶段：</p>
+<ol>
+<li>候选区域提出阶段（Proposal）：采用selective-search方法，从一幅图像生成1K~2K个候选区域；</li>
+<li>特征提取：对每个候选区域，使用CNN进行特征提取；</li>
+<li>分类：每个候选区域的特征放入分类器SVM，得到该候选区域的分类结果；</li>
+<li>回归：候选区域的特征放入回归器，得到bbox的修正量。</li>
+</ol>
+<p>下面是我在阅读时想到的一些问题。</p>
+<h2 id="2-1-候选区域提出阶段所产生的结果尺寸不同？"><a href="#2-1-候选区域提出阶段所产生的结果尺寸不同？" class="headerlink" title="2.1 候选区域提出阶段所产生的结果尺寸不同？"></a>2.1 候选区域提出阶段所产生的结果尺寸不同？</h2><p>由于RCNN特征提取阶段采用的是AlexNet，其最后两层是全连接层fc6和fc7，所以必须保证输入的图片尺寸相同。</p>
+<p>而候选区域所产生的结果尺寸是不相同的。为此，论文中作者采用了多种方式对图片进行放缩（各向同性、各向异性、加padding），最后经过对比实验确定各向异性加padding的放缩方式效果最好。各向同性、各向异性、加padding的具体效果可以看上面链接中的文章。</p>
+<h2 id="2-2-分类器SVM使用的是二分类？"><a href="#2-2-分类器SVM使用的是二分类？" class="headerlink" title="2.2 分类器SVM使用的是二分类？"></a>2.2 分类器SVM使用的是二分类？</h2><p>论文中，单个SVM实现的是二分类，分类器阶段由多个SVM组合而成。比如总共有20种不同的物体（加1种背景），那么分类阶段必须要有21个SVM：第1个SVM的输出是该候选区域属于分类1的概率；第2个SVM的输出是该候选区域属于分类2的概率；……；第21个SVM的输出是该候选区域属于背景的概率。</p>
+<p>对21个SVM的输出结果进行排序，哪个输出最大，候选区域就属于哪一类。比如，对于某个候选区域，第21个SVM的输出最大，那么就将该候选区域标为背景。</p>
+<h2 id="2-3-分类器的输入是？回归器的输入是？"><a href="#2-3-分类器的输入是？回归器的输入是？" class="headerlink" title="2.3 分类器的输入是？回归器的输入是？"></a>2.3 分类器的输入是？回归器的输入是？</h2><p>分类器的输入是特征提取器AlexNet的fc6的输出结果，回归器的输入是特征提取器AlexNet的pool5的输出结果。</p>
+<p>之所以这样取输入，是因为，分类器不依赖坐标信息，所以取fc6全连接层的结果是没有问题的。但是回归器依赖坐标信息（要输出坐标的修正量），必须取坐标信息还没有丢失前的层。而fc6全连接层已经丢失了坐标信息。</p>
+<h2 id="2-4-正负样本的选择？"><a href="#2-4-正负样本的选择？" class="headerlink" title="2.4 正负样本的选择？"></a>2.4 正负样本的选择？</h2><p>正负样本是必须要考虑的问题。论文的做法是每个batch所采样的正负样本比为1：3。当然这个比例是可以变化的，这个系列的后续改进就把正负样本比变为了1：1。</p>
+<p>如果之前没有接触过类似问题的话，是比较容易想当然地认为训练特征提取器、分类器、回归器时，就是把候选区域生成阶段的所有候选区域都放入训练。这样的思路是错的。一张图片中，背景占了绝大多数地方，这样就导致训练用的正样本远远少于负样本，对训练不利。</p>
+<p>正确的做法是对所有候选区域进行随机采样，要求采样的结果中正样本有x张，负样本y张，且保证x与y在数值上相近。（对于一些问题，不大容易做到x:y = 1:1，但至少x与y应该在同一数量级下）</p>
+<h2 id="2-5-如何训练？"><a href="#2-5-如何训练？" class="headerlink" title="2.5 如何训练？"></a>2.5 如何训练？</h2><p>RCNN的网络架构，注定了它不能像其他网络那样进行端到端（end-to-end）的训练。</p>
+<p>前面提到RCNN分为4个阶段：Proposal阶段、特征提取阶段、分类阶段、回归阶段。这4个阶段都是相互独立训练的。</p>
+<p>首先，特征提取器是AlexNet，将它的最后一层fc7进行改造，使得fc7能够输出分类结果。Proposal阶段对每张图片产生了1k~2k个候选区域，把这些图片依照正负样本比例喂给特征提取器，特征提取器fc7输出的分类结果与标签结果进行比对，完成特征提取器的训练。特征提取器的训练完成后，fc7层的使命也完成了，后面的分类器和回归器只会用到fc6、pool5的输出。</p>
+<p>然后，Proposal和特征提取器已经训练完毕了。把它们的结果fc6，输入到分类器SVM中，SVM输出与标签结果比对，完成SVM的训练。</p>
+<p>最后，回归器的训练也和SVM类似，只不过回归器取的是pool5的结果。</p>
+<p>为什么不能同时进行上面3步的训练？因为特征提取器是CNN，分类器是SVM，回归器是脊回归器，不属于同一体系，无法共同训练。甚至在测试时，也需要把每一阶段的结果先保存到磁盘，再喂入下一阶段。这是非常麻烦的一件事。</p>
+<p>聪明的你可能已经想到了：CNN不就能完成分类器和回归器的任务嘛？为什么不只用CNN？这就是RCNN系列后续做的改进之一，我们在下面会讲到。但由于某些原因，在RCNN这篇论文发表时，采用的是特征提取、分类器、回归器相互独立的结构。</p>
+<h2 id="2-6-Proposal的每个候选区域单独提取特征，是不是很慢？"><a href="#2-6-Proposal的每个候选区域单独提取特征，是不是很慢？" class="headerlink" title="2.6 Proposal的每个候选区域单独提取特征，是不是很慢？"></a>2.6 Proposal的每个候选区域单独提取特征，是不是很慢？</h2><p>是的，很慢。Proposal阶段会产生1k~2k个候选区域，每个候选区域都独立提取特征的话，那相当于每幅图片都要进行1k~2k次CNN。（当然由于有正负样本采样，实际并没有有这么多）</p>
+<p>有没有什么好方法？聪明的你应该能想到：既然候选区域都是图片的一部分，那么先对整张图片进行特征提取，然后根据每个候选区域在原图上的位置选择相应的特征不就行了。</p>
+<p>这种方式正是RCNN系列的后续改进之一，只不过在实现上要动点脑筋。（这种方式得到的每个区域的特征数目是不同的，如何把不同特征数目变为相同数目？）</p>
+<h1 id="3-Fast-RCNN"><a href="#3-Fast-RCNN" class="headerlink" title="3. Fast-RCNN"></a>3. Fast-RCNN</h1><p><a href="https://zhuanlan.zhihu.com/p/24780395" target="_blank" rel="noopener">Fast R-CNN-晓雷的文章</a></p>
+<p>理解了RCNN就能很快理解Fast-RCNN了。来讲讲Fast-RCNN相对于RCNN的改进之处。</p>
+<p>首先，正如我们在2.5节提到的，Fast-RCNN将特征提取器、分类器、回归器合在了一起，都用CNN实现。</p>
+<p>其次，正如我们在2.6节提到的，Fast-RCNN对整张图片进行特征提取，再根据候选区域在原图中的位置挑选特征。针对特征数目不同的问题，Fast-RCNN加入了ROI层，使得经过ROI层后，特征的数目相同。</p>
+<p>ROI层的出现与SPPNet有密不可分的联系，请参见：<a href="https://zhuanlan.zhihu.com/p/24774302" target="_blank" rel="noopener">SPPNet-引入空间金字塔池化改进RCNN-晓雷的文章</a></p>
+<h2 id="3-1-为什么叫Fast？"><a href="#3-1-为什么叫Fast？" class="headerlink" title="3.1 为什么叫Fast？"></a>3.1 为什么叫Fast？</h2><p>将特征提取器、分类器、回归器合并，使得训练过程不需要再将每阶段结果保存磁盘单独训练，可以一次性完成训练，加快了训练速度。这是Fast之一。</p>
+<p>对整张图片进行特征提取，用ROI层处理候选区域的特征，使得原本每一个候选区域都要做一次特征提取，变为了现在一整张图片做一次特征提取。训练速度（8.8倍）和测试速度（146倍）都大大加快，这是Fast之二。</p>
+<h2 id="3-2-分类器和回归器的实现细节？"><a href="#3-2-分类器和回归器的实现细节？" class="headerlink" title="3.2 分类器和回归器的实现细节？"></a>3.2 分类器和回归器的实现细节？</h2><p>分类器应该都能想到，用的softmax代替SVM。</p>
+<p>回归器求出（x,y,w,h）4个量，分别代表定位框左上角的坐标xy、宽度w、高度h，损失函数用的是Smooth-L1。</p>
+<h2 id="3-3-Proposal阶段看上去有点违和？"><a href="#3-3-Proposal阶段看上去有点违和？" class="headerlink" title="3.3 Proposal阶段看上去有点违和？"></a>3.3 Proposal阶段看上去有点违和？</h2><p>发展到Fast-RCNN，后续3个阶段都是CNN完成的了，只剩下Proposal阶段还没有用CNN方式解决。Proposal阶段的结果还是需要先保存到磁盘，再喂入后续阶段，有点违和。</p>
+<p>RCNN系列后续的改进，将把Proposal阶段也用CNN实现，真正做到端到端（end-to-end）。</p>
+<h1 id="4-Faster-RCNN"><a href="#4-Faster-RCNN" class="headerlink" title="4. Faster-RCNN"></a>4. Faster-RCNN</h1><p><a href="https://zhuanlan.zhihu.com/p/24916624" target="_blank" rel="noopener">Faster R-CNN-晓雷的文章</a></p>
+<p>Faster-RCNN引入了RPN网络（region proposal network）来代替selective-search。这使得整个网络实现了端到端。</p>
+<h2 id="4-1-RPN网络是如何工作的？"><a href="#4-1-RPN网络是如何工作的？" class="headerlink" title="4.1 RPN网络是如何工作的？"></a>4.1 RPN网络是如何工作的？</h2><p>上面链接里的文章讲的挺详细的：整张图片经过特征提取，得到FeatureMap；将FeatureMap中的每一点按照视野域找到原图中对应的位置，称为Anchor；每个Anchor生成不同大小不同长宽比的多个候选区域。</p>
+<p>回忆下selective-search的候选区域生成方式，它是按照颜色和纹理不断合并得到候选区域的，候选区域的产生没有规律，而RPN是每个Anchor都有对应的固定数量的候选区域，规律很明显。</p>
+<p>理论上说，selective-search生成候选区域的方式更符合我们的直觉，而实验结果，在Faster-RCNN中RPN并不比selective-search差</p>
+<h2 id="4-2-为什么是Faster？"><a href="#4-2-为什么是Faster？" class="headerlink" title="4.2 为什么是Faster？"></a>4.2 为什么是Faster？</h2><p>容易想到，现在RPN网络可以与其他3个阶段共用同一个特征提取结果了，省掉了selective-search的时间。而事实上，selective-search是非常慢的，所以叫Faster。</p>
+<h1 id="5-Mask-RCNN"><a href="#5-Mask-RCNN" class="headerlink" title="5. Mask-RCNN"></a>5. Mask-RCNN</h1><p><a href="https://blog.csdn.net/linolzhang/article/details/71774168" target="_blank" rel="noopener">Mask-RCNN技术解析-linolzhang的专栏</a></p>
+<p>到Faster-RCNN时，RCNN系列对物体检测问题已经非常拿手了。Mask-RCNN则是将RCNN扩展到语义分割领域。</p>
+<h2 id="5-1-为什么叫mask？"><a href="#5-1-为什么叫mask？" class="headerlink" title="5.1 为什么叫mask？"></a>5.1 为什么叫mask？</h2><p>Faster-RCNN网络的最后分别是分类网络和回归网络两条路并行，Mask-RCNN则是再加一条Mask网络与它们并行。</p>
+<p>Mask网络的实现是FCN网络，这也是语义分割领域中非常经典的网络结构。</p>
+<p>由于Mask网络的加入，Mask-RCNN不仅能处理物体检测问题，还能处理语义分割问题。</p>
+<h2 id="5-2-还有哪些细节上的变化？"><a href="#5-2-还有哪些细节上的变化？" class="headerlink" title="5.2 还有哪些细节上的变化？"></a>5.2 还有哪些细节上的变化？</h2><p>首先是ROI层变为了ROIAlign，目的是一样的。那为什么要加入ROIAlign呢？这是因为ROI层会有对齐问题，对齐问题在分类和框选时影响不大，但在语义分割需要严格依赖每个像素点的坐标时，影响会很大。ROIAlign能够解决对齐问题。</p>
+<p>然后是特征提取网络改为了ResNet101+FPN，ResNet我在之前的博客中有细讲；FPN建议对语义分割或者关键点定位感兴趣的同学了解下，FPN是这两个领域中非常经典的结构。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" <i class="fa fa-tag"></i> 深度学习</a>
+          
+            <a href="/tags/物体检测/" <i class="fa fa-tag"></i> 物体检测</a>
+          
+            <a href="/tags/RCNN/" <i class="fa fa-tag"></i> RCNN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/图像处理/mincut-maxflow/" rel="next" title="图像分割之最小割与最大流算法">
+                <i class="fa fa-chevron-left"></i> 图像分割之最小割与最大流算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -418,8 +647,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -570,6 +808,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-R-CNN"><span class="nav-number">2.</span> <span class="nav-text">2. R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-候选区域提出阶段所产生的结果尺寸不同？"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 候选区域提出阶段所产生的结果尺寸不同？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-分类器SVM使用的是二分类？"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 分类器SVM使用的是二分类？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-分类器的输入是？回归器的输入是？"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 分类器的输入是？回归器的输入是？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-正负样本的选择？"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 正负样本的选择？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-如何训练？"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 如何训练？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-Proposal的每个候选区域单独提取特征，是不是很慢？"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Proposal的每个候选区域单独提取特征，是不是很慢？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Fast-RCNN"><span class="nav-number">3.</span> <span class="nav-text">3. Fast-RCNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-为什么叫Fast？"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 为什么叫Fast？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-分类器和回归器的实现细节？"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 分类器和回归器的实现细节？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Proposal阶段看上去有点违和？"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Proposal阶段看上去有点违和？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Faster-RCNN"><span class="nav-number">4.</span> <span class="nav-text">4. Faster-RCNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-RPN网络是如何工作的？"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 RPN网络是如何工作的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-为什么是Faster？"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 为什么是Faster？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Mask-RCNN"><span class="nav-number">5.</span> <span class="nav-text">5. Mask-RCNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-为什么叫mask？"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 为什么叫mask？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-还有哪些细节上的变化？"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 还有哪些细节上的变化？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -727,6 +981,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
@@ -768,6 +1026,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: decodeURI(window.location.pathname),
+            owner: 'imLogM',
+            repo: 'blog_gitment',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '275367e83f8762f2f3ca026827903d1e80979e25',
+            
+                client_id: '0c815dd35359a2ed69dc'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
@@ -1128,6 +1410,29 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

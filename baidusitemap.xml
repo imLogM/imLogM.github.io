@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/rcnn/</loc>
+    <lastmod>2018-06-20T10:30:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>RCNN系列（R-CNN、Fast-RCNN、Faster-RCNN、Mask-RCNN）</title>
+        <pubTime>2018-06-20T10:00:00.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+        <tag>物体检测</tag>
+         
+        <tag>RCNN</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习" url="https://imLogM.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://imLogM.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/mincut-maxflow/</loc>
     <lastmod>2018-06-13T12:00:00.000Z</lastmod>
     <data>
