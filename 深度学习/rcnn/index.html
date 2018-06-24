@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="LogM&#39;s Blog">
 <meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：物体检测（object detection）是计算机视觉非常重要的一个领域。在深度学习出现之前，传统方法始终无法处理好物体检测问题，在深度学习方法引入之后，物体检测领域发生了翻天覆地的变化。最著名的是RCNN系列，另外还有YOLO、SSD。这篇文章首先介绍RCNN系列。 关键字：深度学习, 物体检测, RCNN">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-20T10:30:00.000Z">
+<meta property="og:updated_time" content="2018-06-25T12:50:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RCNN系列（R-CNN、Fast-RCNN、Faster-RCNN、Mask-RCNN）">
 <meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：物体检测（object detection）是计算机视觉非常重要的一个领域。在深度学习出现之前，传统方法始终无法处理好物体检测问题，在深度学习方法引入之后，物体检测领域发生了翻天覆地的变化。最著名的是RCNN系列，另外还有YOLO、SSD。这篇文章首先介绍RCNN系列。 关键字：深度学习, 物体检测, RCNN">
@@ -384,12 +384,24 @@
                 
               
 
-              <time title="创建时间：2018-06-20 18:00:00 / 修改时间：18:30:00" itemprop="dateCreated datePublished" datetime="2018-06-20T18:00:00+08:00">2018-06-20</time>
+              <time title="创建时间：2018-06-20 18:00:00" itemprop="dateCreated datePublished" datetime="2018-06-20T18:00:00+08:00">2018-06-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-25 20:50:00" itemprop="dateModified" datetime="2018-06-25T20:50:00+08:00">2018-06-25</time>
               
             
           </span>
@@ -452,7 +464,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.3k</span>
+                <span title="本文字数">4.4k</span>
               
 
               
@@ -518,7 +530,8 @@
 <p>然后，Proposal和特征提取器已经训练完毕了。把它们的结果fc6，输入到分类器SVM中，SVM输出与标签结果比对，完成SVM的训练。</p>
 <p>最后，回归器的训练也和SVM类似，只不过回归器取的是pool5的结果。</p>
 <p>为什么不能同时进行上面3步的训练？因为特征提取器是CNN，分类器是SVM，回归器是脊回归器，不属于同一体系，无法共同训练。甚至在测试时，也需要把每一阶段的结果先保存到磁盘，再喂入下一阶段。这是非常麻烦的一件事。</p>
-<p>聪明的你可能已经想到了：CNN不就能完成分类器和回归器的任务嘛？为什么不只用CNN？这就是RCNN系列后续做的改进之一，我们在下面会讲到。但由于某些原因，在RCNN这篇论文发表时，采用的是特征提取、分类器、回归器相互独立的结构。</p>
+<p>聪明的你可能已经想到了：CNN不就能完成分类器和回归器的任务嘛？为什么不只用CNN？这就是RCNN系列后续做的改进之一，我们在下面会讲到。但由于某些原因，在RCNN这篇论文发表时，采用的是特征提取、分类器、回归器相互独立的结构。、</p>
+<p>这里顺便提一下脊回归器，脊回归器又称岭回归器（Ridge Regression），表示该回归器加了L2正则化。</p>
 <h2 id="2-6-Proposal的每个候选区域单独提取特征，是不是很慢？"><a href="#2-6-Proposal的每个候选区域单独提取特征，是不是很慢？" class="headerlink" title="2.6 Proposal的每个候选区域单独提取特征，是不是很慢？"></a>2.6 Proposal的每个候选区域单独提取特征，是不是很慢？</h2><p>是的，很慢。Proposal阶段会产生1k~2k个候选区域，每个候选区域都独立提取特征的话，那相当于每幅图片都要进行1k~2k次CNN。（当然由于有正负样本采样，实际并没有有这么多）</p>
 <p>有没有什么好方法？聪明的你应该能想到：既然候选区域都是图片的一部分，那么先对整张图片进行特征提取，然后根据每个候选区域在原图上的位置选择相应的特征不就行了。</p>
 <p>这种方式正是RCNN系列的后续改进之一，只不过在实现上要动点脑筋。（这种方式得到的每个区域的特征数目是不同的，如何把不同特征数目变为相同数目？）</p>
