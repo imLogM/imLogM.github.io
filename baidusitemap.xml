@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://imLogM.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/gradientDescent/</loc>
+    <lastmod>2018-06-29T14:00:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>关于梯度下降法和牛顿法的数学推导</title>
+        <pubTime>2018-06-29T13:00:00.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>梯度下降</tag>
+         
+        <tag>牛顿法</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://imLogM.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/rcnn/</loc>
     <lastmod>2018-06-25T12:50:00.000Z</lastmod>
     <data>

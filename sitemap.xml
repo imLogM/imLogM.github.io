@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://imLogM.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/gradientDescent/</loc>
+    
+    <lastmod>2018-06-29T14:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://imLogM.github.io/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/rcnn/</loc>
     
     <lastmod>2018-06-25T12:50:00.000Z</lastmod>
