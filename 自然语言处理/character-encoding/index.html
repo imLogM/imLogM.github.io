@@ -109,28 +109,25 @@
 
 
 
-  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNe">
-<meta name="keywords" content="深度网络,VGG,复杂度分析,计算量,参数量">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：最近在做自然语言处理相关的项目，发现中文编码的问题实在需要好好学习下，我用python为例，简单介绍下python编程时如何处理好中文编码的问题。 关键字：自然语言处理, 字符编码, python">
+<meta name="keywords" content="自然语言处理,字符编码,python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="以VGG为例，分析深度网络的计算量和参数量">
-<meta property="og:url" content="https://imLogM.github.io/深度学习/vgg-complexity/index.html">
+<meta property="og:title" content="解决python的中文字符编码问题">
+<meta property="og:url" content="https://imLogM.github.io/自然语言处理/character-encoding/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNe">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：最近在做自然语言处理相关的项目，发现中文编码的问题实在需要好好学习下，我用python为例，简单介绍下python编程时如何处理好中文编码的问题。 关键字：自然语言处理, 字符编码, python">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://imlogm.github.io/深度学习/vgg-complexity/vgg16_2.png">
-<meta property="og:image" content="https://imlogm.github.io/深度学习/vgg-complexity/vgg16.png">
-<meta property="og:updated_time" content="2018-05-15T03:00:00.000Z">
+<meta property="og:updated_time" content="2018-07-15T08:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="以VGG为例，分析深度网络的计算量和参数量">
-<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNe">
-<meta name="twitter:image" content="https://imlogm.github.io/深度学习/vgg-complexity/vgg16_2.png">
+<meta name="twitter:title" content="解决python的中文字符编码问题">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：最近在做自然语言处理相关的项目，发现中文编码的问题实在需要好好学习下，我用python为例，简单介绍下python编程时如何处理好中文编码的问题。 关键字：自然语言处理, 字符编码, python">
 
 
 
 
 
 
-  <link rel="canonical" href="https://imLogM.github.io/深度学习/vgg-complexity/"/>
+  <link rel="canonical" href="https://imLogM.github.io/自然语言处理/character-encoding/"/>
 
 
 
@@ -140,7 +137,7 @@
   };
 </script>
 
-  <title>以VGG为例，分析深度网络的计算量和参数量 | LogM's Blog</title>
+  <title>解决python的中文字符编码问题 | LogM's Blog</title>
   
 
 
@@ -345,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/深度学习/vgg-complexity/">
+    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/自然语言处理/character-encoding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LogM">
@@ -362,7 +359,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">以VGG为例，分析深度网络的计算量和参数量
+          <h2 class="post-title" itemprop="name headline">解决python的中文字符编码问题
               
             
           </h2>
@@ -387,7 +384,7 @@
                 
               
 
-              <time title="创建时间：2018-05-15 10:00:00 / 修改时间：11:00:00" itemprop="dateCreated datePublished" datetime="2018-05-15T10:00:00+08:00">2018-05-15</time>
+              <time title="创建时间：2018-07-15 15:00:00 / 修改时间：16:00:00" itemprop="dateCreated datePublished" datetime="2018-07-15T15:00:00+08:00">2018-07-15</time>
             
 
             
@@ -409,7 +406,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/自然语言处理/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
 
                 
                 
@@ -424,8 +421,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/深度学习/vgg-complexity/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/深度学习/vgg-complexity/" itemprop="commentsCount"></span>
+                <a href="/自然语言处理/character-encoding/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/自然语言处理/character-encoding/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -455,7 +452,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.4k</span>
+                <span title="本文字数">4k</span>
               
 
               
@@ -469,7 +466,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -490,32 +487,48 @@
 
       
         <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
-<p><strong>摘要</strong>：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNet、SqueezeNet等论文，你就能明白这些网络结构的精妙之处。</p>
-<p><strong>关键字</strong>：深度网络， VGG， 复杂度分析， 计算量， 参数量</p>
+<p><strong>摘要</strong>：最近在做自然语言处理相关的项目，发现中文编码的问题实在需要好好学习下，我用python为例，简单介绍下python编程时如何处理好中文编码的问题。</p>
+<p><strong>关键字</strong>：自然语言处理, 字符编码, python</p>
 <a id="more"></a>
-<h2 id="1-VGG的结构"><a href="#1-VGG的结构" class="headerlink" title="1. VGG的结构"></a>1. VGG的结构</h2><p>VGG的结构如下图所示：</p>
-<div align="center"><img src="./vgg16_2.png"></div><br><div align="center">图1 不同VGG网络的结构</div>
-
-<p>我们选取其中的VGG-16（上图中的D列）来进行计算量和参数量的分析。VGG-16每个卷积操作后，图像大小变化情况如下图所示：</p>
-<div align="center"><img src="./vgg16.png"></div><br><div align="center">图2 VGG-16的结构</div>
-
-<h2 id="2-卷积操作的计算量和参数量"><a href="#2-卷积操作的计算量和参数量" class="headerlink" title="2. 卷积操作的计算量和参数量"></a>2. 卷积操作的计算量和参数量</h2><p>对于卷积操作的计算量（时间复杂度）和参数量（空间复杂度）可以看这篇文章：<a href="https://zhuanlan.zhihu.com/p/31575074" target="_blank" rel="noopener">卷积神经网络的复杂度分析-Michael Yuan的文章</a></p>
-<p>注意，这些复杂度计算都是估算，并非精确值。</p>
-<p>我们以VGG-16的第一层卷积为例：输入图像224×224×3，输出224×224×64，卷积核大小3×3。</p>
-<p>计算量：<br>$$ Times\approx 224\times 224\times 3\times 3\times 3\times 64=8.7\times 10^7$$</p>
-<p>参数量：<br>$$ Space\approx 3\times 3\times 3\times 64=1728$$</p>
-<p>再举一个例子，VGG-16的最后一个卷积层：输入14×14×512，输出14×14×512，卷积核大小3×3。</p>
-<p>计算量：<br>$$ Times\approx 14\times 14\times 3\times 3\times 512\times 512=4.6\times 10^8$$</p>
-<p>参数量：<br>$$ Space\approx 3\times 3\times 512\times 512=2.4\times 10^6$$</p>
-<h2 id="3-全连接层的计算量和参数量"><a href="#3-全连接层的计算量和参数量" class="headerlink" title="3. 全连接层的计算量和参数量"></a>3. 全连接层的计算量和参数量</h2><p>考虑VGG-16的最后一个全连接层：上层神经元数为4096，下层神经元数为1000。这样的全连接层复杂度应该如何计算？</p>
-<p>其实全连接层可以视为一种特殊的卷积层：上层为1×1×4096，下层为1×1×1000，使用的1×1的卷积核进行卷积。</p>
-<p>那么，计算量：<br>$$ Times\approx 1\times 1\times 1\times 1\times 4096\times 1000=4\times 10^6$$</p>
-<p>参数量：<br>$$ Space\approx 1\times 1\times 4096\times 1000=4\times 10^6$$</p>
-<h2 id="4-VGG-16复杂度分析"><a href="#4-VGG-16复杂度分析" class="headerlink" title="4. VGG-16复杂度分析"></a>4. VGG-16复杂度分析</h2><p>从上述计算中，相信大家对深度网络的复杂度已经有了一些体会，比如VGG-16中：</p>
-<p>1、卷积层的时间复杂度大致是同一数量级的</p>
-<p>2、随着网络深度加深，卷积层的空间复杂度快速上升（每层的空间复杂度是上层的两倍）</p>
-<p>3、全连接层的空间复杂度比卷积层的最后一层还大</p>
-<p>当然，深度网络的复杂度是和网络结构紧密相关的，<strong>上述3个结论仅对VGG这种网络结构有效</strong>。</p>
+<hr>
+<h2 id="1-从字符编码谈起"><a href="#1-从字符编码谈起" class="headerlink" title="1. 从字符编码谈起"></a>1. 从字符编码谈起</h2><p>讲真，字符编码是很大的一块内容，单用一篇博客是完全讲不完的。这里借用一下大佬的文章：<a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="noopener">字符编码笔记：ASCII，Unicode 和 UTF-8 - 阮一峰的日志</a></p>
+<p>看完上面的那篇文章之后，相信你对字符编码有了一定的认识。在中文的自然语言处理中，最常遇到的是ASCII，Unicode，UTF-8，GB2312，GBK等。这几种编码，你都可以搜索相关的文章看下，我这里就不展开介绍了。直接用几个python的程序解释下如何在python中处理字符编码的问题。</p>
+<h2 id="2-关于python的str类型和print过程"><a href="#2-关于python的str类型和print过程" class="headerlink" title="2. 关于python的str类型和print过程"></a>2. 关于python的str类型和print过程</h2><p>比如一段程序：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">s = <span class="string">"这是一段中文"</span>  <span class="comment"># s是str类型的变量</span></span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序输出：“这是一段中文”</span></span><br></pre></td></tr></table></figure></p>
+<p>这段程序中的变量s就是str类型的。我们都知道计算机内部都是二进制的0和1，str类型就是这样的0和1组成的二进制字节流，也就是说这里的变量s在计算机内部是一段二进制字节，并不是字符串。</p>
+<p>如果你是在python的交互式编程环境中，那么你可以做个实验：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = &quot;这是一段中文&quot;</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">\xe8\xbf\x99\xe6\x98\xaf\xe4\xb8\x80\xe6\xae\xb5\xe4\xb8\xad\xe6\x96\x87</span><br></pre></td></tr></table></figure></p>
+<p><code>\x</code>表示这个数是十六进制数，<code>\xe8</code>表示这个数是十六进制数“E8”，转换为二进制为<code>11101000</code>，上面的“\xe8\xbf\x99\xe6\x98\xaf\xe4\xb8\x80\xe6\xae\xb5\xe4\xb8\xad\xe6\x96\x87”就是变量s所代表的字节流，换句话说，就是字符串“这是一段中文”在utf-8编码格式下的二进制表示。</p>
+<p>这里就出现了两个问题：</p>
+<ol>
+<li>变量s赋值时，一段中文字符串是怎么变成二进制字节流的？</li>
+<li>打印变量s时，二进制字节流是怎么变成一段中文字符串的？</li>
+</ol>
+<p>首先是问题1。变量s赋值时，字符串经过某种编码方式编码（encode）成为二进制字节，再赋值给变量s。这里的“某种编码方式”由代码显式指出，代码的第一行<code># -*- coding:utf-8 -*-</code>就是用来显式地告诉计算机，你在str类型赋值时，用utf-8的编码方式。</p>
+<p>然后是问题2。打印变量s时，二进制字节流通过某种编码方式解码（decode）为字符串。这里的“某种编码方式”由操作系统指出。我用的ubuntu系统使用的是utf-8的编码方式。</p>
+<p>注意体会<code>编码</code>和<code>解码</code>这两个词的不同。编码方式和解码方式一样，才能正常print，否则显示的是乱码。</p>
+<p>可能你还是不太明白，我们用上面的程序再做一组实验。因为每台电脑的命令行的编码方式不一样，我用的是ubuntu的系统，编码格式是utf-8，我以我的电脑为例来讲解。同时，注意实验要在命令行的状态下进行。有些ide比较智能，会自动更换输出环境的编码格式，达不到实验效果。</p>
+<p>第一个程序和上面的一样，我们来看下效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令行的编码方式为utf-8</span></span><br><span class="line"></span><br><span class="line">s = <span class="string">"这是一段中文"</span>  <span class="comment"># s是str类型的变量，计算机把字符串以utf-8格式编码成二进制字节，赋值给s</span></span><br><span class="line"></span><br><span class="line">print(s)    <span class="comment"># s是str类型的变量，计算机读取s（也就是读取出二进制字节），然后以utf-8格式解码为字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序输出：“这是一段中文”</span></span><br></pre></td></tr></table></figure></p>
+<p>然后，我们改动第一行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:GBK -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令行的编码方式为utf-8</span></span><br><span class="line"></span><br><span class="line">s = <span class="string">"这是一段中文"</span>  <span class="comment"># s是str类型的变量，计算机把字符串以GBK格式编码成二进制字节，赋值给s</span></span><br><span class="line"></span><br><span class="line">print(s)    <span class="comment"># s是str类型的变量，计算机读取s（也就是读取出二进制字节），然后以utf-8格式解码为字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序输出：一段乱码</span></span><br></pre></td></tr></table></figure></p>
+<p>我们再做第三个实验：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令行的编码方式为GBK</span></span><br><span class="line"></span><br><span class="line">s = <span class="string">"这是一段中文"</span>  <span class="comment"># s是str类型的变量，计算机把字符串以utf-8格式编码成二进制字节，赋值给s</span></span><br><span class="line"></span><br><span class="line">print(s)    <span class="comment"># s是str类型的变量，计算机读取s（也就是读取出二进制字节），然后以GBK格式解码为字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序输出：一段乱码</span></span><br></pre></td></tr></table></figure></p>
+<p>我想你应该能理解这三个程序之间的区别。</p>
+<h2 id="2-关于unicode类型"><a href="#2-关于unicode类型" class="headerlink" title="2. 关于unicode类型"></a>2. 关于unicode类型</h2><p>unicode类型是python中的一种字符串类型，在计算机内也是二进制字节。不过不同于str是单纯的二进制字节，unicode类型特指由ucs2或者ucs4编码格式编码的二进制字节。</p>
+<p>如果你在python的交互式编程环境中，你可以做个实验：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = u&quot;这是一段中文&quot;    # 这边多了个u，表示变量s为unicode变量</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">u&apos;\u8fd9\u662f\u4e00\u6bb5\u4e2d\u6587&apos;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，和上面str类型的实验结果的<code>\x</code>不一样了，这里出现的是<code>\u</code>。<code>\u</code>代表了在unicode编码表中的位置，比如<code>\u8fd9</code>就代表unicode编码表中8fd9这个位置的字符。</p>
+<p>python中unicode类型的变量是作为一个中转站存在的。比如你要把一段字符串从utf-8编码转为GBK编码，你需要做的是:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">s = <span class="string">"这是一段中文"</span>  <span class="comment"># s是str类型的变量，计算机把字符串以utf-8格式编码成二进制字节，赋值给s</span></span><br><span class="line"></span><br><span class="line">s.decode(<span class="string">"utf-8"</span>)   <span class="comment"># 二进制字节s以utf-8格式解码到unicode，解码后s从str类型变为unicode类型</span></span><br><span class="line"></span><br><span class="line">s.encode(<span class="string">"GBK"</span>)     <span class="comment"># unicode类型的变量s被以GBK格式编码为二进制字符串，编码后变量s从unicode类型变为str类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序输出：一段乱码</span></span><br></pre></td></tr></table></figure>
+<p>反过来，要把一个GBK编码的字符串转为utf-8也一样，要以unicode作为中转站。</p>
+<h2 id="3-sys-setdefaultencoding-‘utf-8’"><a href="#3-sys-setdefaultencoding-‘utf-8’" class="headerlink" title="3. sys.setdefaultencoding(‘utf-8’)"></a>3. sys.setdefaultencoding(‘utf-8’)</h2><p>网上一些教程会教你，在遇到中文编码问题的时候，在代码的开头加上这几句：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>你一试，还真的解决了问题，但你不知道这几句话有什么用。</p>
+<p>第一句<code># -*- coding:utf-8 -*-</code>上一段已经说了，是为了显式地说明代码是由utf-8格式编码的，如果你不加的话，一般来说是采用默认编码ascii。ascii不支持中文，你的代码中有任何中文就会出错。</p>
+<p>后面三句，最重要的是<code>sys.setdefaultencoding(&#39;utf-8&#39;)</code>，它的目的是修改默认的解码方式为utf-8。</p>
+<p>看下面的实验：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*- </span></span><br><span class="line">s = <span class="string">'中文字符'</span>  <span class="comment"># s是字符串经过utf-8编码格式编码后的二进制字节，str类型</span></span><br><span class="line">s.encode(<span class="string">'GBK'</span>) <span class="comment"># s是二进制字节，它不会直接encode。python会首先调用decode，将s从str类型变为unicode格式，再用GBK编码为str类型</span></span><br></pre></td></tr></table></figure></p>
+<p>你可以使用以下代码获取python默认的解码方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">print(sys.getdefaultencoding())</span><br></pre></td></tr></table></figure></p>
+<p>假如你获取到的默认解码方式为ascii。那么：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*- </span></span><br><span class="line">s = <span class="string">"这是一段中文"</span>  <span class="comment"># s是字符串经过utf-8编码格式编码后的二进制字节，str类型</span></span><br><span class="line">s.encode(<span class="string">"GBK"</span>) <span class="comment"># s是二进制字节，它不会直接encode。python会首先调用decode，将s从str类型变为unicode格式，再用GBK编码为str类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果你的默认解码方式为ascii，那么上面一句话在实际执行时，相当于下面这句话</span></span><br><span class="line">s.decode(<span class="string">"ascii"</span>).encode(<span class="string">"GBK"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>显然，程序会报错：UnicodeDecodeError: ‘ascii’ codec can’t decode byte 0xe4 in position 。</p>
+<p>解决方法1，显示地指明解码格式：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*- </span></span><br><span class="line">s = <span class="string">"这是一段中文"</span> </span><br><span class="line"></span><br><span class="line">s.decode(<span class="string">"utf-8"</span>).encode(<span class="string">"GBK"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>解决方法2，修改默认解码方式：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*- </span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">s = <span class="string">"这是一段中文"</span> </span><br><span class="line"></span><br><span class="line">s.encode(<span class="string">"GBK"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>你应该能从这几个实验中明白<code>sys.setdefaultencoding(&#39;utf-8&#39;)</code>的作用。</p>
+<h2 id="4-检验学习成果"><a href="#4-检验学习成果" class="headerlink" title="4. 检验学习成果"></a>4. 检验学习成果</h2><p><a href="https://blog.csdn.net/wyongqing/article/details/80347785" target="_blank" rel="noopener">python常见编码错误集合 - 妙音的博客</a></p>
+<p>看看上面链接的博客里所列举的几个错误示例，现在你是否能够一眼就找出错误点，并给出解决方法呢？</p>
 
       
     </div>
@@ -536,15 +549,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/深度网络/" <i class="fa fa-tag"></i> 深度网络</a>
+            <a href="/tags/自然语言处理/" <i class="fa fa-tag"></i> 自然语言处理</a>
           
-            <a href="/tags/VGG/" <i class="fa fa-tag"></i> VGG</a>
+            <a href="/tags/字符编码/" <i class="fa fa-tag"></i> 字符编码</a>
           
-            <a href="/tags/复杂度分析/" <i class="fa fa-tag"></i> 复杂度分析</a>
-          
-            <a href="/tags/计算量/" <i class="fa fa-tag"></i> 计算量</a>
-          
-            <a href="/tags/参数量/" <i class="fa fa-tag"></i> 参数量</a>
+            <a href="/tags/python/" <i class="fa fa-tag"></i> python</a>
           
         </div>
       
@@ -557,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/图像处理/image-fft/" rel="next" title="二维图像的傅立叶变换">
-                <i class="fa fa-chevron-left"></i> 二维图像的傅立叶变换
+              <a href="/机器学习/gradientDescent/" rel="next" title="关于梯度下降法和牛顿法的数学推导">
+                <i class="fa fa-chevron-left"></i> 关于梯度下降法和牛顿法的数学推导
               </a>
             
           </div>
@@ -566,10 +575,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/深度学习/batch-normalization/" rel="prev" title="Batch Normalization (BN)">
-                Batch Normalization (BN) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -808,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-VGG的结构"><span class="nav-number">1.</span> <span class="nav-text">1. VGG的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积操作的计算量和参数量"><span class="nav-number">2.</span> <span class="nav-text">2. 卷积操作的计算量和参数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-全连接层的计算量和参数量"><span class="nav-number">3.</span> <span class="nav-text">3. 全连接层的计算量和参数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-VGG-16复杂度分析"><span class="nav-number">4.</span> <span class="nav-text">4. VGG-16复杂度分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-从字符编码谈起"><span class="nav-number">1.</span> <span class="nav-text">1. 从字符编码谈起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-关于python的str类型和print过程"><span class="nav-number">2.</span> <span class="nav-text">2. 关于python的str类型和print过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-关于unicode类型"><span class="nav-number">3.</span> <span class="nav-text">2. 关于unicode类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-sys-setdefaultencoding-‘utf-8’"><span class="nav-number">4.</span> <span class="nav-text">3. sys.setdefaultencoding(‘utf-8’)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-检验学习成果"><span class="nav-number">5.</span> <span class="nav-text">4. 检验学习成果</span></a></li></ol></div>
             
 
           </div>

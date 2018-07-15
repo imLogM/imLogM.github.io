@@ -109,28 +109,23 @@
 
 
 
-  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNe">
-<meta name="keywords" content="深度网络,VGG,复杂度分析,计算量,参数量">
-<meta property="og:type" content="article">
-<meta property="og:title" content="以VGG为例，分析深度网络的计算量和参数量">
-<meta property="og:url" content="https://imLogM.github.io/深度学习/vgg-complexity/index.html">
+  <meta name="description" content="Talk is cheap, show me the code!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LogM&#39;s Blog">
+<meta property="og:url" content="https://imLogM.github.io/tags/自然语言处理/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNe">
+<meta property="og:description" content="Talk is cheap, show me the code!">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://imlogm.github.io/深度学习/vgg-complexity/vgg16_2.png">
-<meta property="og:image" content="https://imlogm.github.io/深度学习/vgg-complexity/vgg16.png">
-<meta property="og:updated_time" content="2018-05-15T03:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="以VGG为例，分析深度网络的计算量和参数量">
-<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNe">
-<meta name="twitter:image" content="https://imlogm.github.io/深度学习/vgg-complexity/vgg16_2.png">
+<meta name="twitter:title" content="LogM&#39;s Blog">
+<meta name="twitter:description" content="Talk is cheap, show me the code!">
 
 
 
 
 
 
-  <link rel="canonical" href="https://imLogM.github.io/深度学习/vgg-complexity/"/>
+  <link rel="canonical" href="https://imLogM.github.io/tags/自然语言处理/"/>
 
 
 
@@ -140,7 +135,7 @@
   };
 </script>
 
-  <title>以VGG为例，分析深度网络的计算量和参数量 | LogM's Blog</title>
+  <title>标签: 自然语言处理 | LogM's Blog</title>
   
 
 
@@ -187,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <a href="https://github.com/imLogM" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -245,7 +240,7 @@
         
         
           
-          <li class="menu-item menu-item-tags">
+          <li class="menu-item menu-item-tags menu-item-active">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
@@ -281,6 +276,28 @@
 
   
     
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
 
   
 
@@ -329,282 +346,58 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h2>自然语言处理<small>标签</small>
+        </h2>
+      </div>
 
-  
-  
-  
-
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://imLogM.github.io/深度学习/vgg-complexity/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LogM">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/daodao.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LogM's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h3 class="post-title">
         
+            <a class="post-title-link" href="/自然语言处理/character-encoding/" itemprop="url">
+              
+                <span itemprop="name">解决python的中文字符编码问题</span>
+              
+            </a>
         
-          <h2 class="post-title" itemprop="name headline">以VGG为例，分析深度网络的计算量和参数量
-              
-            
-          </h2>
-        
+      </h3>
 
-        <div class="post-meta">
-          <span class="post-time">
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-07-15T15:00:00+08:00"
+              content="2018-07-15" >
+          07-15
+        </time>
+      </div>
 
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-15 10:00:00 / 修改时间：11:00:00" itemprop="dateCreated datePublished" datetime="2018-05-15T10:00:00+08:00">2018-05-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/深度学习/vgg-complexity/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/深度学习/vgg-complexity/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon"
-            >
-            <i class="fa fa-eye"></i>
-             阅读次数： 
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.4k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
-<p><strong>摘要</strong>：我第一次读到ResNet时，完全不敢相信152层的残差网络，竟然在时间复杂度（计算量）上和16层的VGG是一样大的。当然，对于初学者而言，直接分析ResNet的时间复杂度是有点难度的。这篇文章我将以VGG为例，介绍深度网络的复杂度计算方法。掌握这些计算方法后，再去看Inception、ResNet、MobileNet、SqueezeNet等论文，你就能明白这些网络结构的精妙之处。</p>
-<p><strong>关键字</strong>：深度网络， VGG， 复杂度分析， 计算量， 参数量</p>
-<a id="more"></a>
-<h2 id="1-VGG的结构"><a href="#1-VGG的结构" class="headerlink" title="1. VGG的结构"></a>1. VGG的结构</h2><p>VGG的结构如下图所示：</p>
-<div align="center"><img src="./vgg16_2.png"></div><br><div align="center">图1 不同VGG网络的结构</div>
-
-<p>我们选取其中的VGG-16（上图中的D列）来进行计算量和参数量的分析。VGG-16每个卷积操作后，图像大小变化情况如下图所示：</p>
-<div align="center"><img src="./vgg16.png"></div><br><div align="center">图2 VGG-16的结构</div>
-
-<h2 id="2-卷积操作的计算量和参数量"><a href="#2-卷积操作的计算量和参数量" class="headerlink" title="2. 卷积操作的计算量和参数量"></a>2. 卷积操作的计算量和参数量</h2><p>对于卷积操作的计算量（时间复杂度）和参数量（空间复杂度）可以看这篇文章：<a href="https://zhuanlan.zhihu.com/p/31575074" target="_blank" rel="noopener">卷积神经网络的复杂度分析-Michael Yuan的文章</a></p>
-<p>注意，这些复杂度计算都是估算，并非精确值。</p>
-<p>我们以VGG-16的第一层卷积为例：输入图像224×224×3，输出224×224×64，卷积核大小3×3。</p>
-<p>计算量：<br>$$ Times\approx 224\times 224\times 3\times 3\times 3\times 64=8.7\times 10^7$$</p>
-<p>参数量：<br>$$ Space\approx 3\times 3\times 3\times 64=1728$$</p>
-<p>再举一个例子，VGG-16的最后一个卷积层：输入14×14×512，输出14×14×512，卷积核大小3×3。</p>
-<p>计算量：<br>$$ Times\approx 14\times 14\times 3\times 3\times 512\times 512=4.6\times 10^8$$</p>
-<p>参数量：<br>$$ Space\approx 3\times 3\times 512\times 512=2.4\times 10^6$$</p>
-<h2 id="3-全连接层的计算量和参数量"><a href="#3-全连接层的计算量和参数量" class="headerlink" title="3. 全连接层的计算量和参数量"></a>3. 全连接层的计算量和参数量</h2><p>考虑VGG-16的最后一个全连接层：上层神经元数为4096，下层神经元数为1000。这样的全连接层复杂度应该如何计算？</p>
-<p>其实全连接层可以视为一种特殊的卷积层：上层为1×1×4096，下层为1×1×1000，使用的1×1的卷积核进行卷积。</p>
-<p>那么，计算量：<br>$$ Times\approx 1\times 1\times 1\times 1\times 4096\times 1000=4\times 10^6$$</p>
-<p>参数量：<br>$$ Space\approx 1\times 1\times 4096\times 1000=4\times 10^6$$</p>
-<h2 id="4-VGG-16复杂度分析"><a href="#4-VGG-16复杂度分析" class="headerlink" title="4. VGG-16复杂度分析"></a>4. VGG-16复杂度分析</h2><p>从上述计算中，相信大家对深度网络的复杂度已经有了一些体会，比如VGG-16中：</p>
-<p>1、卷积层的时间复杂度大致是同一数量级的</p>
-<p>2、随着网络深度加深，卷积层的空间复杂度快速上升（每层的空间复杂度是上层的两倍）</p>
-<p>3、全连接层的空间复杂度比卷积层的最后一层还大</p>
-<p>当然，深度网络的复杂度是和网络结构紧密相关的，<strong>上述3个结论仅对VGG这种网络结构有效</strong>。</p>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/深度网络/" <i class="fa fa-tag"></i> 深度网络</a>
-          
-            <a href="/tags/VGG/" <i class="fa fa-tag"></i> VGG</a>
-          
-            <a href="/tags/复杂度分析/" <i class="fa fa-tag"></i> 复杂度分析</a>
-          
-            <a href="/tags/计算量/" <i class="fa fa-tag"></i> 计算量</a>
-          
-            <a href="/tags/参数量/" <i class="fa fa-tag"></i> 参数量</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/图像处理/image-fft/" rel="next" title="二维图像的傅立叶变换">
-                <i class="fa fa-chevron-left"></i> 二维图像的傅立叶变换
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/深度学习/batch-normalization/" rel="prev" title="Batch Normalization (BN)">
-                Batch Normalization (BN) <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -625,17 +418,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -799,22 +583,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-VGG的结构"><span class="nav-number">1.</span> <span class="nav-text">1. VGG的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积操作的计算量和参数量"><span class="nav-number">2.</span> <span class="nav-text">2. 卷积操作的计算量和参数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-全连接层的计算量和参数量"><span class="nav-number">3.</span> <span class="nav-text">3. 全连接层的计算量和参数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-VGG-16复杂度分析"><span class="nav-number">4.</span> <span class="nav-text">4. VGG-16复杂度分析</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -971,10 +739,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
-
-
 
   
 
@@ -1016,30 +780,6 @@
 
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: decodeURI(window.location.pathname),
-            owner: 'imLogM',
-            repo: 'blog_gitment',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '275367e83f8762f2f3ca026827903d1e80979e25',
-            
-                client_id: '0c815dd35359a2ed69dc'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
     
 
 
@@ -1400,29 +1140,6 @@
   
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 
