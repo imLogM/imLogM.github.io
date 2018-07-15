@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;amp;&amp;amp;等号赋值&amp;amp;&amp;amp;深拷贝&amp;amp;&amp;amp;浅拷贝 关键字：C/C++">
+  <meta name="description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;amp;&amp;amp;等号赋值&amp;amp;&amp;amp;深拷贝&amp;amp;&amp;amp;浅拷贝，输入函数cin 关键字：C/C++">
 <meta name="keywords" content="C&#x2F;C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C&#x2F;C++常见问题（持续更新）">
 <meta property="og:url" content="https://imLogM.github.io/C-C/c-problem-1/index.html">
 <meta property="og:site_name" content="LogM&#39;s Blog">
-<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;amp;&amp;amp;等号赋值&amp;amp;&amp;amp;深拷贝&amp;amp;&amp;amp;浅拷贝 关键字：C/C++">
+<meta property="og:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;amp;&amp;amp;等号赋值&amp;amp;&amp;amp;深拷贝&amp;amp;&amp;amp;浅拷贝，输入函数cin 关键字：C/C++">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-05-19T08:30:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++常见问题（持续更新）">
-<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;amp;&amp;amp;等号赋值&amp;amp;&amp;amp;深拷贝&amp;amp;&amp;amp;浅拷贝 关键字：C/C++">
+<meta name="twitter:description" content="本文原载于https://imlogm.github.io，转载请注明出处~ 摘要：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;amp;&amp;amp;等号赋值&amp;amp;&amp;amp;深拷贝&amp;amp;&amp;amp;浅拷贝，输入函数cin 关键字：C/C++">
 
 
 
@@ -452,7 +452,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.9k</span>
+                <span title="本文字数">4.1k</span>
               
 
               
@@ -487,7 +487,7 @@
 
       
         <p>本文原载于<a href="https://imlogm.github.io">https://imlogm.github.io</a>，转载请注明出处~</p>
-<p><strong>摘要</strong>：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;&amp;等号赋值&amp;&amp;深拷贝&amp;&amp;浅拷贝</p>
+<p><strong>摘要</strong>：记录在使用C/C++时遇到的常见问题：友元，计时，cout与printf，结构体内存对齐，虚函数，派生类，auto关键字，指针的sizeof，短路求值，qsort与sort，类的拷贝构造&amp;&amp;等号赋值&amp;&amp;深拷贝&amp;&amp;浅拷贝，输入函数cin</p>
 <p><strong>关键字</strong>：C/C++</p>
 <a id="more"></a>
 <hr>
@@ -531,6 +531,7 @@
 <h1 id="10-qsort与sort"><a href="#10-qsort与sort" class="headerlink" title="10. qsort与sort"></a>10. qsort与sort</h1><p>qsort与sort都是C/C++中的排序函数，其中qsort属于库stdlib.h，sort属于库algorithm，它们都只能对连续内存的数据进行排序（比如数组等），对不连续内存的数据不能排序（比如链表）。</p>
 <p>有关这两个函数的用法，请看：<a href="https://www.cnblogs.com/ForeverJoker/archive/2013/05/25/qsort-sort.html" target="_blank" rel="noopener">qsort函数、sort函数-JokerSmithWang的博客</a></p>
 <h1 id="11-类的拷贝构造-amp-amp-等号赋值-amp-amp-深拷贝-amp-amp-浅拷贝"><a href="#11-类的拷贝构造-amp-amp-等号赋值-amp-amp-深拷贝-amp-amp-浅拷贝" class="headerlink" title="11. 类的拷贝构造&amp;&amp;等号赋值&amp;&amp;深拷贝&amp;&amp;浅拷贝"></a>11. 类的拷贝构造&amp;&amp;等号赋值&amp;&amp;深拷贝&amp;&amp;浅拷贝</h1><p>这块内容需要一定的时间消化，参见：<a href="https://www.cnblogs.com/wangguchangqing/p/6141743.html" target="_blank" rel="noopener">C++ 拷贝构造函数和赋值运算符-Brook的博客</a></p>
+<h1 id="12-输入函数cin"><a href="#12-输入函数cin" class="headerlink" title="12. 输入函数cin"></a>12. 输入函数cin</h1><p>平时读取字符串一直用的是<code>std::cin &gt;&gt; str</code>读入输入的，但是这种方式如果字符串里有空格，那么会把空格视为分隔符，把原字符串分成多个字符串。如果要实现读取带空格的字符串，可以使用std::cin.getline()，具体使用方式可以参见：<a href="https://blog.csdn.net/a1015553840/article/details/50579396" target="_blank" rel="noopener">C++输入cin,cin.get(),cin.getline()详细比较及例子-Mac Jiang的博客</a></p>
 
       
     </div>
@@ -807,7 +808,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-友元"><span class="nav-number">1.</span> <span class="nav-text">1. 友元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-计时"><span class="nav-number">2.</span> <span class="nav-text">2. 计时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-cout与printf"><span class="nav-number">3.</span> <span class="nav-text">3. cout与printf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-结构体内存对齐"><span class="nav-number">4.</span> <span class="nav-text">4. 结构体内存对齐</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-虚函数"><span class="nav-number">5.</span> <span class="nav-text">5. 虚函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-关于派生类"><span class="nav-number">6.</span> <span class="nav-text">6. 关于派生类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-auto关键字"><span class="nav-number">7.</span> <span class="nav-text">7. auto关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-指针的sizeof"><span class="nav-number">8.</span> <span class="nav-text">8. 指针的sizeof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-短路求值"><span class="nav-number">9.</span> <span class="nav-text">9. 短路求值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-qsort与sort"><span class="nav-number">10.</span> <span class="nav-text">10. qsort与sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-类的拷贝构造-amp-amp-等号赋值-amp-amp-深拷贝-amp-amp-浅拷贝"><span class="nav-number">11.</span> <span class="nav-text">11. 类的拷贝构造&amp;&amp;等号赋值&amp;&amp;深拷贝&amp;&amp;浅拷贝</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-友元"><span class="nav-number">1.</span> <span class="nav-text">1. 友元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-计时"><span class="nav-number">2.</span> <span class="nav-text">2. 计时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-cout与printf"><span class="nav-number">3.</span> <span class="nav-text">3. cout与printf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-结构体内存对齐"><span class="nav-number">4.</span> <span class="nav-text">4. 结构体内存对齐</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-虚函数"><span class="nav-number">5.</span> <span class="nav-text">5. 虚函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-关于派生类"><span class="nav-number">6.</span> <span class="nav-text">6. 关于派生类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-auto关键字"><span class="nav-number">7.</span> <span class="nav-text">7. auto关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-指针的sizeof"><span class="nav-number">8.</span> <span class="nav-text">8. 指针的sizeof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-短路求值"><span class="nav-number">9.</span> <span class="nav-text">9. 短路求值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-qsort与sort"><span class="nav-number">10.</span> <span class="nav-text">10. qsort与sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-类的拷贝构造-amp-amp-等号赋值-amp-amp-深拷贝-amp-amp-浅拷贝"><span class="nav-number">11.</span> <span class="nav-text">11. 类的拷贝构造&amp;&amp;等号赋值&amp;&amp;深拷贝&amp;&amp;浅拷贝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-输入函数cin"><span class="nav-number">12.</span> <span class="nav-text">12. 输入函数cin</span></a></li></ol></div>
             
 
           </div>
